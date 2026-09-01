@@ -14,6 +14,10 @@
   --ink-faint:#787E78; --rule:#D2D6CC; --rule-strong:#B6BCB1;
   --accent:#1B4E3E; --accent-bright:#20705A;
   --accent-wash:rgba(27,78,62,.11); --accent-line:rgba(27,78,62,.34);
+  --c-elevate:#B0552A; --c-apple:#1B4E3E; --c-stanford:#2E4C88;
+  --c-google:#783A61; --c-aws:#846516; --c-page:#0F7C67;
+  --w-elevate:rgba(176,85,42,.13); --w-apple:rgba(27,78,62,.13); --w-stanford:rgba(46,76,136,.13);
+  --w-google:rgba(120,58,97,.13); --w-page:rgba(15,124,103,.13);
   --serif:"Newsreader",Georgia,"Times New Roman",serif;
   --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
@@ -24,6 +28,10 @@
     --ink-faint:#7D847D; --rule:#292E2A; --rule-strong:#3C433D;
     --accent:#86CBAE; --accent-bright:#A6DCC4;
     --accent-wash:rgba(134,203,174,.13); --accent-line:rgba(134,203,174,.36);
+    --c-elevate:#E2946A; --c-apple:#86CBAE; --c-stanford:#8FAEE8;
+    --c-google:#D89ABE; --c-aws:#D8BE72; --c-page:#63D3B6;
+    --w-elevate:rgba(226,148,106,.16); --w-apple:rgba(134,203,174,.16); --w-stanford:rgba(143,174,232,.16);
+    --w-google:rgba(216,154,190,.16); --w-page:rgba(99,211,182,.16);
   }
 }
 :root[data-theme="dark"]{
@@ -31,6 +39,10 @@
   --ink-faint:#7D847D; --rule:#292E2A; --rule-strong:#3C433D;
   --accent:#86CBAE; --accent-bright:#A6DCC4;
   --accent-wash:rgba(134,203,174,.13); --accent-line:rgba(134,203,174,.36);
+  --c-elevate:#E2946A; --c-apple:#86CBAE; --c-stanford:#8FAEE8;
+  --c-google:#D89ABE; --c-aws:#D8BE72; --c-page:#63D3B6;
+  --w-elevate:rgba(226,148,106,.16); --w-apple:rgba(134,203,174,.16); --w-stanford:rgba(143,174,232,.16);
+  --w-google:rgba(216,154,190,.16); --w-page:rgba(99,211,182,.16);
 }
 *{box-sizing:border-box}
 body{
@@ -57,6 +69,17 @@ h1{
   font-family:var(--sans);font-size:.85rem;font-weight:500;color:var(--ink-soft);
   margin:1.4rem 0 0
 }
+.links{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.5rem 0 0;padding:0;list-style:none}
+.links a{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:var(--sans);font-size:.84rem;font-weight:600;
+  color:var(--ink);border:1.5px solid var(--rule-strong);border-bottom-color:var(--rule-strong);
+  border-radius:2px;padding:.5rem .9rem;transition:border-color .16s,color .16s,transform .16s
+}
+.links a:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+.links a .ic{width:14px;height:14px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.links a.primary{border-color:var(--accent);background:var(--accent);color:var(--paper)}
+.links a.primary:hover{background:var(--accent-bright);border-color:var(--accent-bright);color:var(--paper)}
 .rule-heavy{height:6px;background:var(--ink);margin:2rem 0 0;border:0}
 
 /* ---------------- thesis ---------------- */
@@ -162,6 +185,25 @@ figcaption{
 }
 figcaption b{color:var(--ink);font-weight:700}
 .fighead{margin:0 0 2rem}
+.swipe{display:none;font-family:var(--sans);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin:.75rem 0 0}
+
+/* colour encodes provenance: each column of evidence keeps its hue everywhere */
+.mark-full[cx="352"]{fill:var(--c-elevate)} .mark-part[cx="352"]{stroke:var(--c-elevate)}
+.mark-full[cx="432"]{fill:var(--c-apple)}   .mark-part[cx="432"]{stroke:var(--c-apple)}
+.mark-full[cx="512"]{fill:var(--c-stanford)}.mark-part[cx="512"]{stroke:var(--c-stanford)}
+.mark-full[cx="592"]{fill:var(--c-google)}  .mark-part[cx="592"]{stroke:var(--c-google)}
+.mark-full[cx="672"]{fill:var(--c-aws)}     .mark-part[cx="672"]{stroke:var(--c-aws)}
+.mark-full[cx="752"]{fill:var(--c-page)}    .mark-part[cx="752"]{stroke:var(--c-page)}
+.bar-stanford{fill:var(--w-stanford);stroke:var(--c-stanford)}
+.bar-oxford{fill:var(--w-google);stroke:var(--c-google)}
+.bar-google{fill:var(--w-google);stroke:var(--c-google)}
+.bar-apple{fill:var(--c-apple);stroke:none}
+.n-elevate{color:var(--c-elevate)} .n-stanford{color:var(--c-stanford)} .n-apple{color:var(--c-apple)}
+.band div:nth-child(1)::after{background:var(--c-elevate)}
+.band div:nth-child(2)::after{background:var(--c-stanford)}
+.band div:nth-child(3)::after{background:var(--c-apple)}
+.note dt.d-elevate{color:var(--c-elevate)} .note dt.d-stanford{color:var(--c-stanford)}
+.note dt.d-apple{color:var(--c-apple)}
 
 /* svg semantics */
 .mark-full{fill:var(--accent);stroke:none}
@@ -177,6 +219,49 @@ figcaption b{color:var(--ink);font-weight:700}
 .bar-now{fill:var(--accent)}
 .mrow{transition:opacity .22s ease}
 .matrix.filtered .mrow:not(.on){opacity:.18}
+.matrix.filtered .mrow-joke{opacity:.5}
+.mrow-joke .lbl-row{font-style:italic}
+
+/* ---------------- motion ---------------- */
+@keyframes flow{to{stroke-dashoffset:-24}}
+@keyframes ping{
+  0%{transform:scale(1);opacity:.55}
+  70%{transform:scale(2.6);opacity:0}
+  100%{transform:scale(2.6);opacity:0}
+}
+.flowline{
+  stroke:var(--accent);stroke-width:1.6;fill:none;
+  stroke-dasharray:6 6;animation:flow 1.6s linear infinite
+}
+.flowline.slow{animation-duration:2.4s}
+.flowline.slower{animation-duration:3.2s}
+.pulse{
+  fill:var(--accent);transform-box:fill-box;transform-origin:center;
+  animation:ping 2.4s ease-out infinite
+}
+.node{fill:var(--paper);stroke:var(--accent);stroke-width:1.6}
+.node-solid{fill:var(--accent);stroke:none}
+.boundary{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:4 5;opacity:.55}
+.lbl-node{font-family:var(--sans);font-size:13px;font-weight:700;fill:var(--ink)}
+.lbl-node-inv{font-family:var(--sans);font-size:13px;font-weight:700;fill:var(--paper)}
+
+/* stat band interaction */
+.band div{position:relative;padding-bottom:.9rem}
+.band div::after{
+  content:"";position:absolute;left:0;bottom:0;height:3px;width:0;
+  background:var(--accent);transition:width .5s cubic-bezier(.2,.7,.3,1)
+}
+.band div:hover::after,.band div:focus-within::after{width:100%}
+.band .n{transition:letter-spacing .35s ease}
+.band div:hover .n{letter-spacing:-.03em}
+
+/* matrix emphasis */
+.matrix .mrow .mark-full,.matrix .mrow .mark-part{
+  transition:opacity .22s ease,r .22s cubic-bezier(.2,.7,.3,1)
+}
+.matrix.filtered .mrow.on .mark-full{r:9}
+.chip{transform:translateY(0);transition:background .16s,color .16s,border-color .16s,transform .16s}
+.chip:hover{transform:translateY(-1px)}
 
 /* ---------------- colophon + signoff ---------------- */
 .colophon{margin-top:4rem;padding:2.75rem 2.25rem;background:var(--paper-2);border-left:6px solid var(--accent)}
@@ -200,7 +285,13 @@ figcaption b{color:var(--ink);font-weight:700}
   .wrap{padding:0 1.35rem 4rem}
   .thesis,.row{grid-template-columns:1fr;gap:1.9rem}
   .note{border-left:2px solid var(--accent-line);padding-left:1rem}
-  .figscroll svg{min-width:660px}
+  .figscroll{
+    -webkit-overflow-scrolling:touch;
+    background:linear-gradient(to left,var(--accent-wash),transparent 3rem)
+  }
+  .figscroll svg{min-width:700px}
+  .fighead+.figscroll::after{content:""}
+  figure .swipe{display:block}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
@@ -211,12 +302,21 @@ figcaption b{color:var(--ink);font-weight:700}
   <header class="masthead">
     <p class="eyebrow">Application &middot; AI Fluency Education Lead</p>
     <h1>Allison<br>Felt</h1>
-    <p class="standfirst">
-      San Francisco &nbsp;·&nbsp;
-      <a href="mailto:allisonfelt@gmail.com">allisonfelt@gmail.com</a> &nbsp;·&nbsp;
-      <a href="https://www.allisonfelt.com/">allisonfelt.com</a> &nbsp;·&nbsp;
-      <a href="https://www.linkedin.com/in/allison-lee-felt/">LinkedIn</a>
-    </p>
+    <p class="standfirst">San Francisco, CA &nbsp;·&nbsp; <a href="mailto:allisonfelt@gmail.com">allisonfelt@gmail.com</a></p>
+    <ul class="links">
+      <li><a class="primary" href="allison-felt-cv.pdf" download>
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"></path><path d="M7 11l5 5 5-5"></path><path d="M4 20h16"></path></svg>
+        Résumé (PDF)</a></li>
+      <li><a href="https://www.allisonfelt.com/">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3c2.5 2.7 3.8 5.8 3.8 9S14.5 18.3 12 21c-2.5-2.7-3.8-5.8-3.8-9S9.5 5.7 12 3z"></path></svg>
+        allisonfelt.com</a></li>
+      <li><a href="https://www.linkedin.com/in/allison-lee-felt/">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M7 10v7"></path><path d="M7 7v.01"></path><path d="M12 17v-4a2 2 0 0 1 4 0v4"></path><path d="M12 17v-7"></path></svg>
+        LinkedIn</a></li>
+      <li><a href="https://github.com/allisonfelt/AI-Fluency-Education-Lead-Application">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1.5-4-2.5-6-3"></path><path d="M15 21v-3.9c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.3 4.3 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6 0C6.8 2.4 5.8 2.7 5.8 2.7a4.3 4.3 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.4 9.1c0 4.6 2.7 5.7 5.5 6-.4.4-.4.8-.5 1.4V21"></path></svg>
+        Source for this page</a></li>
+    </ul>
     <hr class="rule-heavy">
   </header>
 
@@ -229,9 +329,9 @@ figcaption b{color:var(--ink);font-weight:700}
   </section>
 
   <section class="band">
-    <div><span class="n">24%</span><span class="t">average knowledge lift</span><span class="s">Elevate, the program I built at Apple</span></div>
-    <div><span class="n">4M</span><span class="t">audience reached</span><span class="s">Stanford GSB, two channels I owned</span></div>
-    <div><span class="n">3M+</span><span class="t">units positioned</span><span class="s">Apple Education, Mac and iPad</span></div>
+    <div><span class="n n-elevate">24%</span><span class="t">average knowledge lift</span><span class="s">Elevate, the program I built at Apple</span></div>
+    <div><span class="n n-stanford">4M</span><span class="t">audience reached</span><span class="s">Stanford GSB, two channels I owned</span></div>
+    <div><span class="n n-apple">3M+</span><span class="t">units positioned</span><span class="s">Apple Education, Mac and iPad</span></div>
   </section>
 
   <section class="filter">
@@ -243,6 +343,7 @@ figcaption b{color:var(--ink);font-weight:700}
       <button class="chip" type="button" aria-pressed="false" data-req="llm">LLMs as infrastructure</button>
       <button class="chip" type="button" aria-pressed="false" data-req="tooling">Builds light tooling herself</button>
       <button class="chip" type="button" aria-pressed="false" data-req="others">Makes things other people teach</button>
+      <button class="chip" type="button" aria-pressed="false" data-req="cofn">Co-creates across teams and partners</button>
     </div>
     <p class="filter-status" id="status">Showing everything. Pick a requirement and I'll get out of the way of the rest.</p>
   </section>
@@ -256,7 +357,7 @@ figcaption b{color:var(--ink);font-weight:700}
       <h2>Where the evidence is</h2>
     </div>
     <div class="figscroll">
-    <svg viewBox="80 0 740 470" role="img" aria-label="Grid mapping six job requirements against six pieces of evidence. Direct evidence is marked with a filled dot, adjacent evidence with a hollow dot, and no evidence is left blank. The rows for LLMs as infrastructure and building light tooling are nearly empty apart from this page.">
+    <svg viewBox="0 0 820 566" role="img" aria-label="Grid mapping seven job requirements against six pieces of evidence. Direct evidence is marked with a filled dot, adjacent evidence with a hollow dot, and no evidence is left blank. The rows for LLMs as infrastructure and building light tooling are nearly empty apart from this page.">
       <!-- column headers, angled -->
       <g class="lbl">
         <text x="352" y="150" transform="rotate(-42 352 150)">Elevate</text>
@@ -314,19 +415,39 @@ figcaption b{color:var(--ink);font-weight:700}
           <circle class="mark-full" cx="512" cy="416" r="6.5"></circle>
           <circle class="mark-part" cx="592" cy="416" r="6"></circle>
         </g>
+        <g class="mrow mrow-joke">
+          <line class="gridline" x1="340" y1="508" x2="764" y2="508"></line>
+          <text class="lbl-row" x="324" y="512" text-anchor="end">Absorbing strongly held opinions from leadership</text>
+          <circle class="mark-full" cx="352" cy="508" r="6.5"></circle>
+          <circle class="mark-full" cx="432" cy="508" r="6.5"></circle>
+          <circle class="mark-full" cx="512" cy="508" r="6.5"></circle>
+          <circle class="mark-full" cx="592" cy="508" r="6.5"></circle>
+          <circle class="mark-full" cx="672" cy="508" r="6.5"></circle>
+          <circle class="mark-full" cx="752" cy="508" r="6.5"></circle>
+        </g>
+        <g class="mrow" data-req="cofn">
+          <line class="gridline" x1="340" y1="462" x2="764" y2="462"></line>
+          <text class="lbl-row" x="324" y="466" text-anchor="end">Co-creates across teams and partners</text>
+          <circle class="mark-full" cx="352" cy="462" r="6.5"></circle>
+          <circle class="mark-full" cx="432" cy="462" r="6.5"></circle>
+          <circle class="mark-full" cx="512" cy="462" r="6.5"></circle>
+          <circle class="mark-full" cx="592" cy="462" r="6.5"></circle>
+          <circle class="mark-part" cx="672" cy="462" r="6"></circle>
+        </g>
       </g>
 
       <!-- legend -->
       <g>
-        <circle class="mark-full" cx="352" cy="455" r="6.5"></circle>
-        <text class="lbl-sm" x="366" y="459">direct evidence</text>
-        <circle class="mark-part" cx="492" cy="455" r="6"></circle>
-        <text class="lbl-sm" x="506" y="459">adjacent</text>
-        <text class="lbl-sm" x="600" y="459">blank = nothing to show</text>
+        <circle class="mark-full" cx="352" cy="551" r="6.5"></circle>
+        <text class="lbl-sm" x="366" y="555">direct evidence</text>
+        <circle class="mark-part" cx="492" cy="551" r="6"></circle>
+        <text class="lbl-sm" x="506" y="555">adjacent</text>
+        <text class="lbl-sm" x="600" y="555">blank = nothing to show</text>
       </g>
     </svg>
     </div>
-    <figcaption><b>The two thin rows are the honest bit.</b> Everything I can prove about working with AI is recent, this page included. The rest of the grid goes back a decade. Better you see that now than find it in an interview.</figcaption>
+    <p class="swipe">Swipe the figure sideways &rarr;</p>
+    <figcaption><b>The two thin rows are the honest bit.</b> Everything I can prove about working with AI is recent, this page included. The rest of the grid goes back a decade — better you see that now than find it in an interview. Colour marks where each claim comes from and carries through the figures below. The last row is the only one that has never once been blank.</figcaption>
   </figure>
 
   <!-- ============ letter ============ -->
@@ -339,9 +460,9 @@ figcaption b{color:var(--ink);font-weight:700}
     </div>
     <aside class="note">
       <dl>
-        <div><dt>24%</dt><dd>average knowledge lift across the cohort<span class="src">Elevate, Apple, 2025</span></dd></div>
-        <div><dt>4 weeks</dt><dd>program length, built from nothing<span class="src">proposed, designed, delivered</span></dd></div>
-        <div><dt>500+</dt><dd>candidates considered for the award it won<span class="src">Apple Impact Award, 2025</span></dd></div>
+        <div><dt class="d-elevate">24%</dt><dd>average knowledge lift across the cohort<span class="src">Elevate, Apple, 2025</span></dd></div>
+        <div><dt class="d-elevate">4 weeks</dt><dd>program length, built from nothing<span class="src">proposed, designed, delivered</span></dd></div>
+        <div><dt class="d-elevate">500+</dt><dd>candidates considered for the award it won<span class="src">Apple Impact Award, 2025</span></dd></div>
       </dl>
     </aside>
   </article>
@@ -362,14 +483,17 @@ figcaption b{color:var(--ink);font-weight:700}
 
       <!-- role bars -->
       <g>
-        <rect class="bar" x="70" y="86" width="234" height="30" rx="2"></rect>
+        <rect class="bar bar-stanford" x="70" y="86" width="234" height="30" rx="2"></rect>
         <text class="lbl-row" x="80" y="106">Stanford GSB</text>
-        <rect class="bar" x="314" y="86" width="107" height="30" rx="2"></rect>
+        <rect class="bar bar-oxford" x="314" y="86" width="107" height="30" rx="2"></rect>
         <text class="lbl-row" x="324" y="106">Oxford MBA</text>
-        <rect class="bar" x="450" y="86" width="49" height="30" rx="2"></rect>
+        <rect class="bar bar-google" x="450" y="86" width="49" height="30" rx="2"></rect>
         <text class="lbl-row" x="450" y="76">Google</text>
-        <rect class="bar bar-now" x="499" y="86" width="327" height="30" rx="2"></rect>
+        <rect class="bar bar-apple bar-now" x="499" y="86" width="327" height="30" rx="2"></rect>
         <text class="lbl-row" x="510" y="106" fill="var(--paper)">Apple Education</text>
+        <circle class="pulse" cx="826" cy="101" r="5"></circle>
+        <circle cx="826" cy="101" r="4.5" fill="var(--accent)"></circle>
+        <text class="lbl-sm" x="836" y="105">now</text>
       </g>
 
       <!-- axis -->
@@ -405,6 +529,7 @@ figcaption b{color:var(--ink);font-weight:700}
       <text class="lbl-sm" x="60" y="312">Every role: take something complicated, find the version a specific audience can use, ship it at volume.</text>
     </svg>
     </div>
+    <p class="swipe">Swipe the figure sideways &rarr;</p>
     <figcaption><b>None of these were AI jobs.</b> Which is rather the point — the skill you're hiring for is older than the tool, and I've been practising it since 2019 on audiences under no obligation to pay attention.</figcaption>
   </figure>
 
@@ -416,11 +541,60 @@ figcaption b{color:var(--ink);font-weight:700}
     </div>
     <aside class="note">
       <dl>
-        <div><dt>3M+</dt><dd>units across Mac and iPad in the segments I position<span class="src">Apple Education</span></dd></div>
-        <div><dt>2</dt><dd>distinct audiences, two vocabularies: K–12 and higher ed<span class="src">2023 – present</span></dd></div>
+        <div><dt class="d-apple">3M+</dt><dd>units across Mac and iPad in the segments I position<span class="src">Apple Education</span></dd></div>
+        <div><dt class="d-apple">2</dt><dd>distinct audiences, two vocabularies: K–12 and higher ed<span class="src">2023 – present</span></dd></div>
       </dl>
     </aside>
   </article>
+
+
+  <!-- ============ FIGURE 03: leverage ============ -->
+  <figure>
+    <div class="fighead">
+      <p class="kicker">Figure 03</p>
+      <h2>I&rsquo;m not in the room past here</h2>
+    </div>
+    <div class="figscroll">
+    <svg viewBox="0 0 880 320" role="img" aria-label="Diagram showing one thing made by Allison handed to producers, freelancers and sellers, who deliver it across a dashed boundary to four million people she never meets.">
+      <defs>
+        <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+        </marker>
+      </defs>
+
+      <rect class="node" x="24" y="122" width="182" height="76" rx="3"></rect>
+      <text class="lbl-node" x="40" y="152">The thing I make</text>
+      <text class="lbl-sm" x="40" y="172">a curriculum, a framework,</text>
+      <text class="lbl-sm" x="40" y="187">a script, a page</text>
+
+      <path class="flowline" d="M206,160 C240,160 250,122 296,122"></path>
+      <path class="flowline slow" d="M206,160 L296,160"></path>
+      <path class="flowline slower" d="M206,160 C240,160 250,198 296,198"></path>
+
+      <rect class="node" x="296" y="100" width="186" height="44" rx="3"></rect>
+      <text class="lbl-node" x="312" y="127">5 producers</text>
+      <rect class="node" x="296" y="138" width="186" height="44" rx="3"></rect>
+      <text class="lbl-node" x="312" y="165">~20 freelancers</text>
+      <rect class="node" x="296" y="176" width="186" height="44" rx="3"></rect>
+      <text class="lbl-node" x="312" y="203">Sellers, every region</text>
+
+      <line class="boundary" x1="560" y1="52" x2="560" y2="268"></line>
+      <text class="lbl-sm" x="560" y="42" text-anchor="middle" style="font-weight:700">the handoff</text>
+
+      <path class="flowline" d="M482,122 C530,122 560,160 636,160"></path>
+      <path class="flowline slow" d="M482,160 L636,160"></path>
+      <path class="flowline slower" d="M482,198 C530,198 560,160 636,160"></path>
+
+      <rect class="node-solid" x="636" y="122" width="204" height="76" rx="3" style="fill:var(--c-stanford)"></rect>
+      <text class="lbl-node-inv" x="654" y="152">4M people</text>
+      <text class="lbl-sm" x="654" y="174" fill="var(--paper)" opacity=".85">who have never met me</text>
+
+      <text class="lbl-sm" x="30" y="296">The whole job is making something good enough to survive the handoff.</text>
+    </svg>
+    </div>
+    <p class="swipe">Swipe the figure sideways &rarr;</p>
+    <figcaption><b>This is the bullet in your posting about making things other people teach.</b> It&rsquo;s also the part I find genuinely satisfying &mdash; a producer or a seller taking the thing, changing it for their audience, and never needing to call me.</figcaption>
+  </figure>
 
   <article class="row" data-req="multimedia curricula">
     <header class="rowhead"><p class="kicker">03 &middot; The pipeline</p><h2>I was shortening idea-to-published before AI could help</h2></header>
@@ -430,10 +604,10 @@ figcaption b{color:var(--ink);font-weight:700}
     </div>
     <aside class="note">
       <dl>
-        <div><dt>4M</dt><dd>combined audience across the two channels<span class="src">Stanford GSB</span></dd></div>
-        <div><dt>15–20</dt><dd>finished pieces shipped per month<span class="src">web, video, email, print, social</span></dd></div>
-        <div><dt>3×</dt><dd>increase in video production<span class="src">without added headcount</span></dd></div>
-        <div><dt>+80%</dt><dd>email open rate, from audience data<span class="src">not from more sending</span></dd></div>
+        <div><dt class="d-stanford">4M</dt><dd>combined audience across the two channels<span class="src">Stanford GSB</span></dd></div>
+        <div><dt class="d-stanford">15–20</dt><dd>finished pieces shipped per month<span class="src">web, video, email, print, social</span></dd></div>
+        <div><dt class="d-stanford">3×</dt><dd>increase in video production<span class="src">without added headcount</span></dd></div>
+        <div><dt class="d-stanford">+80%</dt><dd>email open rate, from audience data<span class="src">not from more sending</span></dd></div>
       </dl>
     </aside>
   </article>
@@ -450,10 +624,71 @@ figcaption b{color:var(--ink);font-weight:700}
     </aside>
   </article>
 
-  <article class="row" data-req="writing others">
-    <header class="rowhead"><p class="kicker">05 &middot; The creative half</p><h2>The formats are the work</h2></header>
+
+  <article class="row" data-req="cofn others">
+    <header class="rowhead"><p class="kicker">05 &middot; How I work</p><h2>The aligning is the work</h2></header>
     <div class="prose">
-      <p>My degree is in fine arts. I've shown photography in Melbourne, Taipei, and London, and lived in six countries in five years — which is a long stretch of being the least fluent person in every room. You don't forget what that feels like, and it turns out to be useful.</p>
+      <p>Every job I've had has been cross-functional, which is a polite way of saying I spend a lot of time in rooms where six teams want six different things and every one of them is right. At Apple that's Research, Finance, Enterprise, Sales, Enablement, and Product. At Apple Retail it was Brand, Industrial Design, and Legal, on launches where the packaging, the campaign, and the lawyers all had to land on the same answer on the same morning.</p>
+      <p>I used to treat that as the tax you pay before the real work starts. It isn't. <strong>At any real scale, the aligning is the work</strong> — the thing a customer eventually hears is just the residue of everyone agreeing.</p>
+      <p>I'd also like to think I'm a good person to build something with. I've managed producers, freelancers, and four early-career folks out of Apple Retail, and the measure I actually care about is whether people finish a project having learned something and still wanting to work with me.</p>
+    </div>
+    <aside class="note">
+      <p class="plain"><b>Rooms I'm comfortable in</b>Research · Finance · Enterprise · Sales · Enablement · Product · Brand · Industrial Design · Legal · and roughly twenty freelancers who did not report to me.</p>
+    </aside>
+  </article>
+
+  <!-- ============ FIGURE 04: alignment ============ -->
+  <figure>
+    <div class="fighead">
+      <p class="kicker">Figure 04</p>
+      <h2>Six teams, one story</h2>
+    </div>
+    <div class="figscroll">
+    <svg viewBox="0 0 880 330" role="img" aria-label="Six functions — Research, Finance, Enterprise, Sales, Enablement and Product — each pulling in a different direction, converging into a single arrow labelled one story, told the same way everywhere.">
+      <defs>
+        <marker id="ar3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="var(--c-apple)"></path>
+        </marker>
+      </defs>
+
+      <text class="lbl-sm" x="30" y="26" style="font-weight:700;letter-spacing:.12em;text-transform:uppercase">Everyone is right, separately</text>
+
+      <g class="lbl-node">
+        <text x="30" y="66">Research</text>
+        <text x="30" y="106">Finance</text>
+        <text x="30" y="146">Enterprise</text>
+        <text x="30" y="186">Sales</text>
+        <text x="30" y="226">Enablement</text>
+        <text x="30" y="266">Product</text>
+      </g>
+
+      <path class="flowline" d="M150,60 C300,60 340,150 470,164" style="stroke:var(--c-stanford)"></path>
+      <path class="flowline slow" d="M132,100 C300,100 340,155 470,164" style="stroke:var(--c-aws)"></path>
+      <path class="flowline slower" d="M164,140 C300,140 360,160 470,164" style="stroke:var(--c-google)"></path>
+      <path class="flowline" d="M114,180 C300,180 360,170 470,164" style="stroke:var(--c-elevate)"></path>
+      <path class="flowline slow" d="M172,220 C300,220 360,180 470,164" style="stroke:var(--c-stanford)"></path>
+      <path class="flowline slower" d="M130,260 C300,260 340,190 470,164" style="stroke:var(--c-google)"></path>
+
+      <circle cx="484" cy="164" r="13" fill="var(--c-apple)"></circle>
+      <circle class="pulse" cx="484" cy="164" r="13" fill="var(--c-apple)"></circle>
+      <text class="lbl-sm" x="484" y="200" text-anchor="middle">the aligning</text>
+
+      <line x1="504" y1="164" x2="806" y2="164" stroke="var(--c-apple)" stroke-width="5" marker-end="url(#ar3)"></line>
+      <text class="lbl-node" x="520" y="146">One story, told the same way</text>
+      <text class="lbl-sm" x="520" y="192">in every region, by people I will never meet</text>
+
+      <text class="lbl-sm" x="30" y="312">Named teams are the ones I partner with at Apple Education. The list at Apple Retail was Brand, Industrial Design and Legal.</text>
+    </svg>
+    </div>
+    <p class="swipe">Swipe the figure sideways &rarr;</p>
+    <figcaption><b>I used to think alignment was the overhead before the work.</b> It isn&rsquo;t. At this scale the aligning <em>is</em> the work &mdash; what a customer eventually hears is the residue of six teams agreeing.</figcaption>
+  </figure>
+
+  <article class="row" data-req="writing others">
+    <header class="rowhead"><p class="kicker">06 &middot; The creative half</p><h2>The formats are the work</h2></header>
+    <div class="prose">
+      <p>My degree is in fine arts. I've shown photography in Melbourne, Taipei, and London — <a href="https://www.allisonfelt.com/">that work lives here</a> — and lived in six countries in five years, which is a long stretch of being the least fluent person in every room. You don't forget what that feels like, and it turns out to be useful.</p>
+      <p>Outside work I'm a photographer and a fairly stubborn endurance athlete: two Ironmans, a pile of marathons, and a seat in Oxford's first boat, which mostly taught me that being visibly bad at something in front of other people is survivable. Most of learning looks like that.</p>
       <p>You wrote that most AI education still looks like an online course from 2015. Best sentence in the posting. <strong>I'd rather invent a format than fill one in.</strong></p>
     </div>
     <aside class="note">
@@ -462,7 +697,7 @@ figcaption b{color:var(--ink);font-weight:700}
   </article>
 
   <article class="row" data-req="tooling curricula">
-    <header class="rowhead"><p class="kicker">06 &middot; The gaps</p><h2>What I don't have</h2></header>
+    <header class="rowhead"><p class="kicker">07 &middot; The gaps</p><h2>What I don't have</h2></header>
     <div class="prose">
       <p>No learning-science degree. No cognitive-science research. No long history in AI education. Those are the two thin rows in Figure 01, and I'd rather point at them myself than have you find them.</p>
       <p>Here's my case anyway: the rarest thing on your list isn't a credential. It's having made people fluent in something and being able to prove it. <strong>I can read the learning science. Knowing what survives contact with a room you're not in took ten years and a lot of things that didn't work.</strong></p>
@@ -491,6 +726,11 @@ figcaption b{color:var(--ink);font-weight:700}
     <p>I've spent my career making complicated things make sense to people who don't have time to become experts in them, and then checking whether it landed. That's the job you posted. I'd love to do it here.</p>
     <p class="sig">Allison Felt</p>
     <p class="contact"><a href="mailto:allisonfelt@gmail.com">allisonfelt@gmail.com</a> &nbsp;·&nbsp; San Francisco, CA</p>
+    <ul class="links" style="margin-top:1.5rem">
+      <li><a class="primary" href="allison-felt-cv.pdf" download>Résumé (PDF)</a></li>
+      <li><a href="https://www.allisonfelt.com/">allisonfelt.com</a></li>
+      <li><a href="https://www.linkedin.com/in/allison-lee-felt/">LinkedIn</a></li>
+    </ul>
   </section>
 
 </div>
