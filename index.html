@@ -15,7 +15,7 @@
   --accent:#1B4E3E; --accent-bright:#20705A;
   --accent-wash:rgba(27,78,62,.11); --accent-line:rgba(27,78,62,.34);
   --c-elevate:#B0552A; --c-apple:#1B4E3E; --c-stanford:#2E4C88;
-  --c-google:#783A61; --c-aws:#846516; --c-page:#0F7C67;
+  --c-google:#783A61; --c-aws:#846516; --c-page:#0F7C67; --c-retail:#8C3F4A;
   --w-elevate:rgba(176,85,42,.13); --w-apple:rgba(27,78,62,.13); --w-stanford:rgba(46,76,136,.13);
   --w-google:rgba(120,58,97,.13); --w-page:rgba(15,124,103,.13);
   --serif:"Newsreader",Georgia,"Times New Roman",serif;
@@ -29,7 +29,7 @@
     --accent:#86CBAE; --accent-bright:#A6DCC4;
     --accent-wash:rgba(134,203,174,.13); --accent-line:rgba(134,203,174,.36);
     --c-elevate:#E2946A; --c-apple:#86CBAE; --c-stanford:#8FAEE8;
-    --c-google:#D89ABE; --c-aws:#D8BE72; --c-page:#63D3B6;
+    --c-google:#D89ABE; --c-aws:#D8BE72; --c-page:#63D3B6; --c-retail:#E39AA4; --c-retail:#E39AA4;
     --w-elevate:rgba(226,148,106,.16); --w-apple:rgba(134,203,174,.16); --w-stanford:rgba(143,174,232,.16);
     --w-google:rgba(216,154,190,.16); --w-page:rgba(99,211,182,.16);
   }
@@ -185,6 +185,8 @@ figcaption{
 }
 figcaption b{color:var(--ink);font-weight:700}
 .fighead{margin:0 0 2rem}
+.elsewhere{padding:2.5rem 0;border-bottom:1px solid var(--rule)}
+.elsewhere p:not(.kicker){max-width:44rem;font-size:1.02rem;margin:0;color:var(--ink-soft)}
 .swipe{display:none;font-family:var(--sans);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin:.75rem 0 0}
 
 /* colour encodes provenance: each column of evidence keeps its hue everywhere */
@@ -198,6 +200,8 @@ figcaption b{color:var(--ink);font-weight:700}
 .bar-oxford{fill:var(--w-google);stroke:var(--c-google)}
 .bar-google{fill:var(--w-google);stroke:var(--c-google)}
 .bar-apple{fill:var(--c-apple);stroke:none}
+.bar-retail{fill:var(--c-retail);stroke:none}
+.note dt.d-retail{color:var(--c-retail)}
 .n-elevate{color:var(--c-elevate)} .n-stanford{color:var(--c-stanford)} .n-apple{color:var(--c-apple)}
 .band div:nth-child(1)::after{background:var(--c-elevate)}
 .band div:nth-child(2)::after{background:var(--c-stanford)}
@@ -326,7 +330,7 @@ figcaption b{color:var(--ink);font-weight:700}
       <blockquote>“You don't need a background in AI or a degree in education, but you do need to have <em>made people fluent in something before at scale</em>.”</blockquote>
       <p class="cite">— From the job description for this role</p>
     </div>
-    <p class="answer"><b>My answer</b>I built a four-week course at Apple to fix a problem nobody had named, taught it to a sales organization, and then — the part I&rsquo;m actually proud of — checked whether it worked.</p>
+    <p class="answer"><b>My answer</b>I built a four-week course at Apple to fix a problem nobody had named, taught it to a sales organization, and then — the part I&rsquo;m actually proud of — checked whether it worked. I&rsquo;ve been doing a version of this job for ten years. I want to do it here.</p>
   </section>
 
   <section class="band">
@@ -362,7 +366,7 @@ figcaption b{color:var(--ink);font-weight:700}
       <!-- column headers, angled -->
       <g class="lbl">
         <text x="352" y="150" transform="rotate(-42 352 150)">Elevate</text>
-        <text x="432" y="150" transform="rotate(-42 432 150)">Apple Education</text>
+        <text x="432" y="150" transform="rotate(-42 432 150)">Apple</text>
         <text x="512" y="150" transform="rotate(-42 512 150)">Stanford GSB</text>
         <text x="592" y="150" transform="rotate(-42 592 150)">Google</text>
         <text x="672" y="150" transform="rotate(-42 672 150)">AWS</text>
@@ -475,89 +479,74 @@ figcaption b{color:var(--ink);font-weight:700}
       <h2>Same job, different names</h2>
     </div>
     <div class="figscroll">
-    <svg viewBox="0 0 900 340" role="img" aria-label="Timeline from 2019 to the present showing four roles: Stanford Graduate School of Business, an Oxford MBA including an AWS summer, Google Chromebooks, and Apple Education. Beneath each role is the audience being taught.">
+    <svg viewBox="0 0 900 400" role="img" aria-label="Timeline from 2019 to now showing five roles: Stanford Graduate School of Business, an Oxford MBA including an AWS summer, Google Chromebooks, a contract producer role at Apple Retail and Packaging, and Apple Education. Beneath the axis each role is listed with the audience taught.">
       <defs>
         <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
         </marker>
       </defs>
 
-      <!-- role bars -->
-      <g>
-        <rect class="bar bar-stanford" x="70" y="86" width="234" height="30" rx="15"></rect>
-        <text class="lbl-row" x="80" y="106">Stanford GSB</text>
-        <rect class="bar bar-oxford" x="314" y="86" width="107" height="30" rx="15"></rect>
-        <text class="lbl-row" x="324" y="106">Oxford MBA</text>
-        <rect class="bar bar-google" x="450" y="86" width="49" height="30" rx="15"></rect>
-        <text class="lbl-row" x="450" y="76">Google</text>
-        <rect class="bar bar-apple bar-now" x="499" y="86" width="327" height="30" rx="15"></rect>
-        <text class="lbl-row" x="510" y="106" fill="var(--paper)">Apple Education</text>
-        <circle class="pulse" cx="826" cy="101" r="5"></circle>
-        <circle cx="826" cy="101" r="4.5" fill="var(--accent)"></circle>
-        <text class="lbl-sm" x="836" y="105">now</text>
-      </g>
+      <rect x="70" y="60" width="234" height="30" rx="15" style="fill:var(--w-stanford);stroke:var(--c-stanford);stroke-width:1.5"></rect>
+      <text class="lbl-row" x="86" y="80">Stanford GSB</text>
+      <rect x="314" y="60" width="107" height="30" rx="15" style="fill:rgba(132,101,22,.13);stroke:var(--c-aws);stroke-width:1.5"></rect>
+      <text class="lbl-row" x="328" y="80">Oxford</text>
+      <rect x="450" y="60" width="49" height="30" rx="15" style="fill:var(--c-google);stroke:none"></rect>
+      <rect x="503" y="60" width="68" height="30" rx="15" style="fill:var(--c-retail);stroke:none"></rect>
+      <rect x="575" y="60" width="251" height="30" rx="15" style="fill:var(--c-apple);stroke:none"></rect>
+      <text class="lbl-row" x="591" y="80" fill="var(--paper)">Apple Education</text>
+      <circle class="pulse" cx="826" cy="75" r="5" style="fill:var(--c-apple)"></circle>
+      <circle cx="826" cy="75" r="4.5" style="fill:var(--c-apple)"></circle>
+      <text class="lbl-sm" x="838" y="79">now</text>
 
-      <!-- axis -->
-      <line class="axis" x1="60" y1="140" x2="846" y2="140" marker-end="url(#arw)"></line>
+      <line class="axis" x1="60" y1="114" x2="846" y2="114" marker-end="url(#arw)"></line>
       <g class="lbl-yr">
-        <line class="tick" x1="70"  y1="140" x2="70"  y2="147"></line><text x="70"  y="162" text-anchor="middle">2019</text>
-        <line class="tick" x1="265" y1="140" x2="265" y2="147"></line><text x="265" y="162" text-anchor="middle">2021</text>
-        <line class="tick" x1="362" y1="140" x2="362" y2="147"></line><text x="362" y="162" text-anchor="middle">2022</text>
-        <line class="tick" x1="460" y1="140" x2="460" y2="147"></line><text x="460" y="162" text-anchor="middle">2023</text>
-        <line class="tick" x1="752" y1="140" x2="752" y2="147"></line><text x="752" y="162" text-anchor="middle">2026</text>
+        <line class="tick" x1="70"  y1="114" x2="70"  y2="121"></line><text x="70"  y="136" text-anchor="middle">2019</text>
+        <line class="tick" x1="265" y1="114" x2="265" y2="121"></line><text x="265" y="136" text-anchor="middle">2021</text>
+        <line class="tick" x1="362" y1="114" x2="362" y2="121"></line><text x="362" y="136" text-anchor="middle">2022</text>
+        <line class="tick" x1="460" y1="114" x2="460" y2="121"></line><text x="460" y="136" text-anchor="middle">2023</text>
+        <line class="tick" x1="752" y1="114" x2="752" y2="121"></line><text x="752" y="136" text-anchor="middle">2026</text>
       </g>
 
-      <!-- audience lane -->
-      <text class="lbl-sm" x="60" y="206" style="font-weight:700;letter-spacing:.12em;text-transform:uppercase">Who I was teaching</text>
-      <g class="lbl">
-        <line class="gridline" x1="70" y1="224" x2="304" y2="224"></line>
-        <text x="70" y="246">4M readers and viewers</text>
-        <text class="lbl-sm" x="70" y="264">15–20 pieces a month, 5 producers, ~20 freelancers</text>
+      <text class="lbl-sm" x="60" y="184" style="font-weight:700;letter-spacing:.12em;text-transform:uppercase">Who I was teaching</text>
 
-        <line class="gridline" x1="314" y1="224" x2="421" y2="224"></line>
-        <text x="314" y="246">1,000+ startups</text>
-        <text class="lbl-sm" x="314" y="264">mapped and ranked, AWS</text>
+      <circle cx="66" cy="214" r="5.5" style="fill:var(--c-stanford)"></circle>
+      <text class="lbl-row" x="84" y="218">Stanford GSB</text>
+      <text class="lbl" x="304" y="218">4M readers and viewers &mdash; 15&ndash;20 pieces a month, 5 producers, ~20 freelancers</text>
 
-        <line class="gridline" x1="450" y1="224" x2="499" y2="224"></line>
-        <text x="450" y="246">Schools</text>
-        <text class="lbl-sm" x="450" y="264">Chromebook discovery</text>
+      <circle cx="66" cy="246" r="5.5" style="fill:var(--c-aws)"></circle>
+      <text class="lbl-row" x="84" y="250">Oxford MBA, AWS</text>
+      <text class="lbl" x="304" y="250">1,000+ startups mapped and ranked across EMEA</text>
 
-        <line class="gridline" x1="509" y1="224" x2="826" y2="224"></line>
-        <text x="509" y="246">K–12 and higher-ed decision makers, then Apple's own sellers</text>
-        <text class="lbl-sm" x="509" y="264">3M+ units positioned; Elevate taught to the sales organization</text>
-      </g>
+      <circle cx="66" cy="278" r="5.5" style="fill:var(--c-google)"></circle>
+      <text class="lbl-row" x="84" y="282">Google</text>
+      <text class="lbl" x="304" y="282">Chromebook app discovery, built for schools</text>
 
-      <text class="lbl-sm" x="60" y="312">Every role: take something complicated, find the version a specific audience can use, ship it at volume.</text>
+      <circle cx="66" cy="310" r="5.5" style="fill:var(--c-retail)"></circle>
+      <text class="lbl-row" x="84" y="314">Apple, Retail + Packaging</text>
+      <text class="lbl" x="304" y="314">Global launches; ~$15M saved on AirPods localisation</text>
+
+      <circle cx="66" cy="342" r="5.5" style="fill:var(--c-apple)"></circle>
+      <text class="lbl-row" x="84" y="346">Apple Education</text>
+      <text class="lbl" x="304" y="346">3M+ units positioned; Elevate taught to the sales organisation</text>
+
+      <text class="lbl-sm" x="60" y="386">Every role: take something complicated, find the version a specific audience can use, ship it at volume.</text>
     </svg>
     </div>
     <p class="swipe">Swipe the figure sideways &rarr;</p>
     <figcaption><b>None of these were AI jobs.</b> Which is rather the point — the skill you're hiring for is older than the tool, and I've been practising it since 2019 on audiences under no obligation to pay attention.</figcaption>
   </figure>
 
-  <article class="row" data-req="writing others">
-    <header class="rowhead"><p class="kicker">02 &middot; The audience</p><h2>I already write for people who aren't us</h2></header>
-    <div class="prose">
-      <p>You mention nurses, teachers, small business owners, policymakers. I've spent three years on one of those groups. At Apple I own how we talk about Mac and iPad in education — three million units — which mostly means working out how to explain something technical to a district administrator who has forty minutes, six other meetings, and no interest whatsoever in a spec sheet.</p>
-      <p>The test isn't whether I like the words. It's whether a seller in Ohio I'll never meet picks them up and gets it right. <strong>Most of my job is writing things other people say out loud.</strong></p>
-    </div>
-    <aside class="note">
-      <dl>
-        <div><dt class="d-apple">3M+</dt><dd>units across Mac and iPad in the segments I position<span class="src">Apple Education</span></dd></div>
-        <div><dt class="d-apple">2</dt><dd>distinct audiences, two vocabularies: K–12 and higher ed<span class="src">2023 – present</span></dd></div>
-      </dl>
-    </aside>
-  </article>
-
 
   <article class="row" data-req="writing curricula">
-    <header class="rowhead"><p class="kicker">03 &middot; On simplifying</p><h2>Simple isn&rsquo;t shorter</h2></header>
+    <header class="rowhead"><p class="kicker">02 &middot; On simplifying</p><h2>Simple isn&rsquo;t shorter</h2></header>
     <div class="prose">
       <p class="lede">&ldquo;Simplify&rdquo; usually gets used to mean &ldquo;make it shorter,&rdquo; and that isn&rsquo;t it. Cutting words is easy. Working out what someone actually needs in order to make their own call is a different job, and it&rsquo;s the whole job.</p>
-      <p>The test I use is: can this person now decide something without me? Not whether they enjoyed it, and not whether they finished. A district administrator doesn&rsquo;t need to know how the silicon works. They need just enough of a model to tell whether a claim in a vendor deck is plausible. <strong>The smallest true model that lets someone reason on their own</strong> — that&rsquo;s the line I&rsquo;m always hunting for, and it moves for every audience.</p>
-      <p>Which is why your posting stopped me. You wrote that the point is people making their own decisions and judgements with AI rather than copying someone else&rsquo;s. That&rsquo;s the sentence I&rsquo;ve been trying to write about my own work for about ten years.</p>
+      <p>You mention nurses, teachers, small business owners, policymakers. I&rsquo;ve spent three years on one of those groups &mdash; at Apple I own how we talk about Mac and iPad in education, which mostly means explaining something technical to a district administrator who has forty minutes and no interest in a spec sheet. They don&rsquo;t need to know how the silicon works. They need just enough of a model to tell whether a claim in a vendor deck is plausible.</p>
+      <p>So the test is: can this person decide something without me now? <strong>The smallest true model that lets someone reason on their own</strong> &mdash; and it moves for every audience. Which is why your posting stopped me. You wrote that the point is people making their own judgements with AI rather than copying someone else&rsquo;s.</p>
     </div>
     <aside class="note">
-      <p class="plain"><b>The failure modes</b>Too little, and there&rsquo;s nothing to reason with. Too much, and it&rsquo;s true, complete, and useless. Both feel like teaching while they&rsquo;re happening.</p>
+      <dl><div><dt class="d-apple">3M+</dt><dd>units across Mac and iPad in the segments I position<span class="src">Apple Education</span></dd></div></dl>
+      <p class="plain" style="margin-top:1.6rem"><b>The failure modes</b>Too little, and there&rsquo;s nothing to reason with. Too much, and it&rsquo;s true, complete, and useless. Both feel like teaching while they&rsquo;re happening.</p>
     </aside>
   </article>
 
@@ -595,67 +584,32 @@ figcaption b{color:var(--ink);font-weight:700}
     <figcaption><b>A working belief, not a measurement.</b> I&rsquo;ve never plotted this and I&rsquo;m not going to pretend it&rsquo;s data. It&rsquo;s the shape I design against, and the peak is the only interesting part &mdash; everything past it feels generous and is actually just unloading.</figcaption>
   </figure>
 
-  <!-- ============ FIGURE 04: leverage ============ -->
-  <figure>
-    <div class="fighead">
-      <p class="kicker">Figure 04</p>
-      <h2>I&rsquo;m not in the room past here</h2>
-    </div>
-    <div class="figscroll">
-    <svg viewBox="0 0 880 320" role="img" aria-label="Diagram showing one thing made by Allison handed to producers, freelancers and sellers, who deliver it across a dashed boundary to four million people she never meets.">
-      <defs>
-        <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-          <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
-        </marker>
-      </defs>
-
-      <rect class="node" x="24" y="122" width="182" height="76" rx="38"></rect>
-      <text class="lbl-node" x="40" y="152">The thing I make</text>
-      <text class="lbl-sm" x="40" y="172">a curriculum, a framework,</text>
-      <text class="lbl-sm" x="40" y="187">a script, a page</text>
-
-      <path class="flowline" d="M206,160 C240,160 250,122 296,122"></path>
-      <path class="flowline slow" d="M206,160 L296,160"></path>
-      <path class="flowline slower" d="M206,160 C240,160 250,198 296,198"></path>
-
-      <rect class="node" x="296" y="100" width="186" height="42" rx="21"></rect>
-      <text class="lbl-node" x="312" y="127">5 producers</text>
-      <rect class="node" x="296" y="139" width="186" height="42" rx="21"></rect>
-      <text class="lbl-node" x="312" y="165">~20 freelancers</text>
-      <rect class="node" x="296" y="178" width="186" height="42" rx="21"></rect>
-      <text class="lbl-node" x="312" y="203">Sellers, every region</text>
-
-      <line class="boundary" x1="560" y1="52" x2="560" y2="268"></line>
-      <text class="lbl-sm" x="560" y="42" text-anchor="middle" style="font-weight:700">the handoff</text>
-
-      <path class="flowline" d="M482,122 C530,122 560,160 636,160"></path>
-      <path class="flowline slow" d="M482,160 L636,160"></path>
-      <path class="flowline slower" d="M482,198 C530,198 560,160 636,160"></path>
-
-      <rect class="node-solid" x="636" y="122" width="204" height="76" rx="38" style="fill:var(--c-stanford)"></rect>
-      <text class="lbl-node-inv" x="654" y="152">4M people</text>
-      <text class="lbl-sm" x="654" y="174" fill="var(--paper)" opacity=".95">who have never met me</text>
-
-      <text class="lbl-sm" x="30" y="296">The whole job is making something good enough to survive the handoff.</text>
-    </svg>
-    </div>
-    <p class="swipe">Swipe the figure sideways &rarr;</p>
-    <figcaption><b>This is the bullet in your posting about making things other people teach.</b> It&rsquo;s also the part I find genuinely satisfying &mdash; a producer or a seller taking the thing, changing it for their audience, and never needing to call me.</figcaption>
-  </figure>
-
   <article class="row" data-req="multimedia curricula">
-    <header class="rowhead"><p class="kicker">04 &middot; The pipeline</p><h2>I was shortening idea-to-published before AI could help</h2></header>
+    <header class="rowhead"><p class="kicker">03 &middot; The pipeline</p><h2>I was shortening idea-to-published before AI could help</h2></header>
     <div class="prose">
-      <p>Before Apple I ran creative production at Stanford's business school — YouTube and the magazine, the two things the team actually bet on. Five producers, about twenty freelancers, four million people on the other end.</p>
-      <p>The relevant bit is throughput. Fifteen to twenty finished pieces a month. I tripled video output by changing how we found subjects rather than by hiring anyone. Open rates went up 80% once I finally sat down and read the audience data, which in hindsight I should have done a year earlier. And I started a faculty series nobody asked for, because there was an audience we kept missing.</p>
+      <p>Before Apple I ran creative production at Stanford's business school — YouTube and <a href="https://www.gsb.stanford.edu/magazine"><em>Stanford Business</em> magazine</a>, the two things the team actually bet on. Five producers, twenty freelancers, four million people on the other end.</p>
+      <p>The one I'd point you to is <a href="https://www.youtube.com/playlist?list=PLxq_lXOUlvQCrEwiwPaUSJoUzIDTUnq2_"><strong>Class Takeaways</strong></a>: thirty five-minute lessons, one idea each, taken from GSB courses and rebuilt for people who were never going to enrol in them. Humour as serious business. How groups actually work. Roughly 46,000 views and still running. <strong>That is the brief in your posting</strong> — take something taught to a small expert audience and make a version anyone can finish.</p>
+      <p>The rest was throughput: fifteen to twenty finished pieces a month, video output tripled by changing how we found subjects rather than by hiring anyone, and open rates up 80% once I finally sat down and read the audience data. You want the distance from idea to published to keep shrinking. That was already the job.</p>
     </div>
     <aside class="note">
       <dl>
         <div><dt class="d-stanford">4M</dt><dd>combined audience across the two channels<span class="src">Stanford GSB</span></dd></div>
+        <div><dt class="d-stanford">30</dt><dd>five-minute lessons in Class Takeaways<span class="src">a modular library, before that was the word for it</span></dd></div>
         <div><dt class="d-stanford">15–20</dt><dd>finished pieces shipped per month<span class="src">web, video, email, print, social</span></dd></div>
         <div><dt class="d-stanford">3×</dt><dd>increase in video production<span class="src">without added headcount</span></dd></div>
         <div><dt class="d-stanford">+80%</dt><dd>email open rate, from audience data<span class="src">not from more sending</span></dd></div>
       </dl>
+    </aside>
+  </article>
+
+  <article class="row" data-req="multimedia cofn">
+    <header class="rowhead"><p class="kicker">04 &middot; Retail and packaging</p><h2>My first year at Apple was the making end</h2></header>
+    <div class="prose">
+      <p>Before Education I was at Apple on a contract as a Marketing Design Producer for Retail Design and Packaging &mdash; production rather than strategy. Global launch execution: campaign briefs and creative across in-store, web, social, and paid, working with Brand, Industrial Design, and Legal on product and cultural launches, including the 2023 Black History Month and Pride watch bands.</p>
+      <p>The piece I&rsquo;m proudest of is the least glamorous. I consolidated packaging localisation for AirPods, which cut European distribution complexity, <strong>saved roughly $15M</strong>, and lowered the environmental footprint. Nobody writes a case study about packaging SKUs. It was still the highest-leverage thing I did that year, and it&rsquo;s the same instinct as everything else here: find the thing everyone has stopped seeing, and fix it.</p>
+    </div>
+    <aside class="note">
+      <dl><div><dt class="d-retail">~$15M</dt><dd>saved consolidating AirPods packaging localisation<span class="src">Apple Retail + Packaging, contract</span></dd></div></dl>
     </aside>
   </article>
 
@@ -687,7 +641,7 @@ figcaption b{color:var(--ink);font-weight:700}
   <!-- ============ FIGURE 04: alignment ============ -->
   <figure>
     <div class="fighead">
-      <p class="kicker">Figure 05</p>
+      <p class="kicker">Figure 04</p>
       <h2>Six teams, one story</h2>
     </div>
     <div class="figscroll">
@@ -731,23 +685,16 @@ figcaption b{color:var(--ink);font-weight:700}
     <figcaption><b>I used to think alignment was the overhead before the work.</b> It isn&rsquo;t. At this scale the aligning <em>is</em> the work &mdash; what a customer eventually hears is the residue of six teams agreeing.</figcaption>
   </figure>
 
-  <article class="row" data-req="writing others">
-    <header class="rowhead"><p class="kicker">07 &middot; The creative half</p><h2>The formats are the work</h2></header>
-    <div class="prose">
-      <p>My degree is in fine arts. I've shown photography in Melbourne, Taipei, and London — <a href="https://www.allisonfelt.com/">that work lives here</a> — and lived in six countries in five years, which is a long stretch of being the least fluent person in every room. You don't forget what that feels like, and it turns out to be useful.</p>
-      <p>Outside work I'm a photographer and a fairly stubborn endurance athlete: two Ironmans, a pile of marathons, and a seat in Oxford's first boat, which mostly taught me that being visibly bad at something in front of other people is survivable. Most of learning looks like that.</p>
-      <p>You wrote that most AI education still looks like an online course from 2015. Best sentence in the posting. <strong>I'd rather invent a format than fill one in.</strong></p>
-    </div>
-    <aside class="note">
-      <p class="plain"><b>Elsewhere</b>Exhibited in three countries. Two-time Ironman finisher. First boat, Oxford rowing. Oxford MBA; BA in fine arts with distinction, one of three selected by faculty.</p>
-    </aside>
-  </article>
+  <section class="elsewhere">
+    <p class="kicker">Elsewhere</p>
+    <p>Fine arts degree. Illustration, design, photography and video &mdash; <a href="https://www.allisonfelt.com/">allisonfelt.com</a>, work shown in Melbourne, Taipei, and London. Two Ironmans, a pile of marathons, a seat in Oxford&rsquo;s first boat. Six countries in five years, which is a long stretch of being the least fluent person in every room. You don&rsquo;t forget what that feels like, and most of learning looks like that.</p>
+  </section>
 
   <article class="row" data-req="tooling curricula">
-    <header class="rowhead"><p class="kicker">08 &middot; The gaps</p><h2>What I don't have</h2></header>
+    <header class="rowhead"><p class="kicker">07 &middot; The gaps</p><h2>What I don't have</h2></header>
     <div class="prose">
       <p>No learning-science degree. No cognitive-science research. No long history in AI education. Those are the two thin rows in Figure 01, and I'd rather point at them myself than have you find them.</p>
-      <p>Here's my case anyway: the rarest thing on your list isn't a credential. It's having made people fluent in something and being able to prove it. <strong>I can read the learning science. Knowing what survives contact with a room you're not in took ten years and a lot of things that didn't work.</strong></p>
+      <p>Here's my case anyway: the rarest thing on your list isn't a credential. It's having made people fluent in something and being able to prove it. <strong>I can read the learning science. Knowing what survives contact with a room you're not in took ten years and a lot of things that didn't work.</strong> I'd back that over a credential, and I'd like the chance to show you why.</p>
     </div>
     <aside class="note">
       <p class="plain"><b>Also relevant</b>Built a taxonomy and weighted evaluation framework across 1,000+ startups at AWS. Defined content strategy and success metrics for a new in-product experience at Google. Systems, not just campaigns.</p>
@@ -762,15 +709,13 @@ figcaption b{color:var(--ink);font-weight:700}
     <p>Written and built by me, with Claude Code as the workshop. Anthropic's candidate guidelines invite working with Claude, and writing about AI fluency in a plain text editor felt a bit like turning up to a swim test in a coat.</p>
     <ul class="steps">
       <li><code>01</code><span>Drafted the argument against the job description, requirement by requirement.</span></li>
-      <li><code>02</code><span>Set the type and colour system before writing a line of layout.</span></li>
-      <li><code>03</code><span>Built the requirement filter by hand — no framework, no dependencies.</span></li>
-      <li><code>04</code><span>Hand-authored both figures as SVG on a shared grid.</span></li>
-      <li><code>05</code><span>Deployed from the repository. Every revision is in the history.</span></li>
+      <li><code>02</code><span>Built the filter and hand-authored every figure as SVG. No framework, no dependencies.</span></li>
+      <li><code>03</code><span>Deployed from the repository. Every revision is in the history.</span></li>
     </ul>
   </section>
 
   <section class="signoff">
-    <p>I've spent my career making complicated things make sense to people who don't have time to become experts in them, and then checking whether it landed. That's the job you posted. I'd love to do it here.</p>
+    <p>I've spent my career making complicated things make sense to people who don't have time to become experts in them, and then checking whether it landed. That's your posting, close to line for line — and I want <em>this</em> one, not a job in AI generally. It's the first time I've seen the thing I'm good at pointed at something this worth getting right. I'd like to come and do it.</p>
     <p class="sig">Allison Felt</p>
     <p class="contact"><a href="mailto:allisonfelt@gmail.com">allisonfelt@gmail.com</a> &nbsp;·&nbsp; San Francisco, CA</p>
     <ul class="links" style="margin-top:1.5rem">
