@@ -30,6 +30,14 @@ around whatever the reader cares about.
   That is deliberate: the gaps are stated rather than hidden.
 - **Figure 02 — a timeline.** 2019 to now, with the audience being taught under
   each role, so the through-line is visible instead of claimed.
+- **Figure 03 — the smallest true model.** A conceptual curve, labelled as a
+  belief rather than data: telling someone more helps until it doesn't.
+- **Figure 04 — leverage.** What I make, handed to the people who deliver it,
+  across a boundary I'm deliberately not on the far side of.
+- **Figure 05 — alignment.** Six functions converging into one story, because
+  at this scale the aligning is the work.
+- **Colour encodes provenance.** Each evidence source keeps its hue across the
+  stat band, the grid and the timeline, so you can see where a claim comes from.
 - **Receipts in the margin.** Every number in the letter sits beside the claim
   it supports, sourced.
 

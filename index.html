@@ -74,13 +74,13 @@ h1{
   display:inline-flex;align-items:center;gap:.5rem;
   font-family:var(--sans);font-size:.84rem;font-weight:600;
   color:var(--ink);border:1.5px solid var(--rule-strong);border-bottom-color:var(--rule-strong);
-  border-radius:2px;padding:.5rem .9rem;transition:border-color .16s,color .16s,transform .16s
+  border-radius:999px;padding:.6rem 1.1rem;transition:border-color .16s,color .16s,transform .16s
 }
 .links a:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
 .links a .ic{width:14px;height:14px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .links a.primary{border-color:var(--accent);background:var(--accent);color:var(--paper)}
 .links a.primary:hover{background:var(--accent-bright);border-color:var(--accent-bright);color:var(--paper)}
-.rule-heavy{height:6px;background:var(--ink);margin:2rem 0 0;border:0}
+.rule-heavy{height:6px;background:var(--ink);margin:2rem 0 0;border:0;border-radius:999px}
 
 /* ---------------- thesis ---------------- */
 .thesis{
@@ -93,12 +93,12 @@ blockquote{
 }
 blockquote em{
   font-style:normal;font-weight:700;color:var(--accent);
-  background:var(--accent-wash);box-shadow:0 0 0 .2em var(--accent-wash)
+  background:var(--accent-wash);border-radius:999px;box-shadow:0 0 0 .28em var(--accent-wash)
 }
 .cite{font-family:var(--sans);font-size:.75rem;font-weight:500;color:var(--ink-faint);margin:1.1rem 0 0}
 .answer{
   font-family:var(--sans);font-size:.86rem;line-height:1.62;color:var(--ink-soft);
-  border-left:3px solid var(--accent);padding-left:1.1rem
+  border-left:3px solid var(--accent);padding:.2rem 0 .2rem 1.2rem;border-radius:0 14px 14px 0
 }
 .answer b{
   display:block;font-size:.68rem;font-weight:700;letter-spacing:.14em;
@@ -128,8 +128,8 @@ blockquote em{
 .chips{display:flex;flex-wrap:wrap;gap:.55rem}
 .chip{
   font-family:var(--sans);font-size:.82rem;font-weight:600;color:var(--ink-soft);
-  background:transparent;border:1.5px solid var(--rule-strong);border-radius:2px;
-  padding:.5rem .9rem;cursor:pointer;transition:background .16s,color .16s,border-color .16s
+  background:transparent;border:1.5px solid var(--rule-strong);border-radius:999px;
+  padding:.55rem 1.05rem;cursor:pointer;transition:background .16s,color .16s,border-color .16s
 }
 .chip:hover{border-color:var(--accent);color:var(--ink)}
 .chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--paper)}
@@ -248,7 +248,7 @@ figcaption b{color:var(--ink);font-weight:700}
 /* stat band interaction */
 .band div{position:relative;padding-bottom:.9rem}
 .band div::after{
-  content:"";position:absolute;left:0;bottom:0;height:3px;width:0;
+  content:"";position:absolute;left:0;bottom:0;height:4px;width:0;border-radius:999px;
   background:var(--accent);transition:width .5s cubic-bezier(.2,.7,.3,1)
 }
 .band div:hover::after,.band div:focus-within::after{width:100%}
@@ -264,7 +264,7 @@ figcaption b{color:var(--ink);font-weight:700}
 .chip:hover{transform:translateY(-1px)}
 
 /* ---------------- colophon + signoff ---------------- */
-.colophon{margin-top:4rem;padding:2.75rem 2.25rem;background:var(--paper-2);border-left:6px solid var(--accent)}
+.colophon{margin-top:4rem;padding:2.75rem 2.5rem;background:var(--paper-2);border-left:6px solid var(--accent);border-radius:0 26px 26px 0}
 .colophon .kicker{margin-bottom:.5rem}
 .colophon h2{font-size:clamp(1.7rem,3.6vw,2.3rem);margin-bottom:1.1rem}
 .colophon p{font-size:1rem;max-width:36rem;margin:0}
@@ -274,6 +274,7 @@ figcaption b{color:var(--ink);font-weight:700}
 .steps code{font-family:var(--mono);font-size:.78rem;font-weight:600;color:var(--accent)}
 
 .signoff{margin-top:4rem;padding-top:2.5rem;border-top:6px solid var(--ink)}
+.signoff::before{content:"";display:block;width:0;height:0}
 .signoff p{max-width:36rem;font-size:1.18rem;line-height:1.5;font-weight:500}
 .sig{font-family:var(--serif);font-style:italic;font-weight:600;font-size:2.4rem;margin:1.75rem 0 .4rem;letter-spacing:-.02em}
 .contact{font-family:var(--sans);font-size:.85rem;font-weight:500;color:var(--ink-soft);margin:0}
@@ -483,13 +484,13 @@ figcaption b{color:var(--ink);font-weight:700}
 
       <!-- role bars -->
       <g>
-        <rect class="bar bar-stanford" x="70" y="86" width="234" height="30" rx="2"></rect>
+        <rect class="bar bar-stanford" x="70" y="86" width="234" height="30" rx="15"></rect>
         <text class="lbl-row" x="80" y="106">Stanford GSB</text>
-        <rect class="bar bar-oxford" x="314" y="86" width="107" height="30" rx="2"></rect>
+        <rect class="bar bar-oxford" x="314" y="86" width="107" height="30" rx="15"></rect>
         <text class="lbl-row" x="324" y="106">Oxford MBA</text>
-        <rect class="bar bar-google" x="450" y="86" width="49" height="30" rx="2"></rect>
+        <rect class="bar bar-google" x="450" y="86" width="49" height="30" rx="15"></rect>
         <text class="lbl-row" x="450" y="76">Google</text>
-        <rect class="bar bar-apple bar-now" x="499" y="86" width="327" height="30" rx="2"></rect>
+        <rect class="bar bar-apple bar-now" x="499" y="86" width="327" height="30" rx="15"></rect>
         <text class="lbl-row" x="510" y="106" fill="var(--paper)">Apple Education</text>
         <circle class="pulse" cx="826" cy="101" r="5"></circle>
         <circle cx="826" cy="101" r="4.5" fill="var(--accent)"></circle>
@@ -548,10 +549,56 @@ figcaption b{color:var(--ink);font-weight:700}
   </article>
 
 
-  <!-- ============ FIGURE 03: leverage ============ -->
+  <article class="row" data-req="writing curricula">
+    <header class="rowhead"><p class="kicker">03 &middot; On simplifying</p><h2>Simple isn&rsquo;t shorter</h2></header>
+    <div class="prose">
+      <p class="lede">&ldquo;Simplify&rdquo; usually gets used to mean &ldquo;make it shorter,&rdquo; and that isn&rsquo;t it. Cutting words is easy. Working out what someone actually needs in order to make their own call is a different job, and it&rsquo;s the whole job.</p>
+      <p>The test I use is: can this person now decide something without me? Not whether they enjoyed it, and not whether they finished. A district administrator doesn&rsquo;t need to know how the silicon works. They need just enough of a model to tell whether a claim in a vendor deck is plausible. <strong>The smallest true model that lets someone reason on their own</strong> — that&rsquo;s the line I&rsquo;m always hunting for, and it moves for every audience.</p>
+      <p>Which is why your posting stopped me. You wrote that the point is people making their own decisions and judgements with AI rather than copying someone else&rsquo;s. That&rsquo;s the sentence I&rsquo;ve been trying to write about my own work for about ten years.</p>
+    </div>
+    <aside class="note">
+      <p class="plain"><b>The failure modes</b>Too little, and there&rsquo;s nothing to reason with. Too much, and it&rsquo;s true, complete, and useless. Both feel like teaching while they&rsquo;re happening.</p>
+    </aside>
+  </article>
+
+  <!-- ============ FIGURE 03: the curve ============ -->
   <figure>
     <div class="fighead">
       <p class="kicker">Figure 03</p>
+      <h2>The smallest true model</h2>
+    </div>
+    <div class="figscroll">
+    <svg viewBox="0 0 820 350" role="img" aria-label="A conceptual curve: as you tell someone more, their ability to decide for themselves rises steeply, peaks at what is labelled the smallest true model, then declines as detail overwhelms them.">
+      <line class="axis" x1="86" y1="272" x2="768" y2="272"></line>
+      <line class="axis" x1="86" y1="272" x2="86" y2="58"></line>
+
+      <path d="M86,262 C150,250 210,120 330,98 C470,72 620,150 762,214" fill="none" stroke="var(--c-apple)" stroke-width="3"></path>
+
+      <line class="boundary" x1="330" y1="98" x2="330" y2="272"></line>
+      <circle cx="330" cy="98" r="7" fill="var(--c-apple)"></circle>
+      <circle class="pulse" cx="330" cy="98" r="7" style="fill:var(--c-apple)"></circle>
+      <text class="lbl-node" x="348" y="62">The smallest true model</text>
+      <text class="lbl-sm" x="348" y="80">enough to reason with, nothing spare</text>
+
+      <text class="lbl-sm" x="104" y="182" style="fill:var(--c-elevate)">nothing to</text>
+      <text class="lbl-sm" x="104" y="196" style="fill:var(--c-elevate)">reason with</text>
+      <text class="lbl-sm" x="606" y="120" style="fill:var(--c-google)">true, complete,</text>
+      <text class="lbl-sm" x="606" y="134" style="fill:var(--c-google)">and useless</text>
+
+      <text class="lbl-sm" x="86" y="296">almost nothing</text>
+      <text class="lbl-sm" x="768" y="296" text-anchor="end">everything I know</text>
+      <text class="lbl-sm" x="427" y="320" text-anchor="middle" style="font-weight:700;letter-spacing:.1em;text-transform:uppercase">How much you tell someone</text>
+      <text class="lbl-sm" x="-165" y="72" transform="rotate(-90 0 0)" text-anchor="middle" style="font-weight:700;letter-spacing:.1em;text-transform:uppercase">What they can decide alone</text>
+    </svg>
+    </div>
+    <p class="swipe">Swipe the figure sideways &rarr;</p>
+    <figcaption><b>A working belief, not a measurement.</b> I&rsquo;ve never plotted this and I&rsquo;m not going to pretend it&rsquo;s data. It&rsquo;s the shape I design against, and the peak is the only interesting part &mdash; everything past it feels generous and is actually just unloading.</figcaption>
+  </figure>
+
+  <!-- ============ FIGURE 04: leverage ============ -->
+  <figure>
+    <div class="fighead">
+      <p class="kicker">Figure 04</p>
       <h2>I&rsquo;m not in the room past here</h2>
     </div>
     <div class="figscroll">
@@ -562,7 +609,7 @@ figcaption b{color:var(--ink);font-weight:700}
         </marker>
       </defs>
 
-      <rect class="node" x="24" y="122" width="182" height="76" rx="3"></rect>
+      <rect class="node" x="24" y="122" width="182" height="76" rx="38"></rect>
       <text class="lbl-node" x="40" y="152">The thing I make</text>
       <text class="lbl-sm" x="40" y="172">a curriculum, a framework,</text>
       <text class="lbl-sm" x="40" y="187">a script, a page</text>
@@ -571,11 +618,11 @@ figcaption b{color:var(--ink);font-weight:700}
       <path class="flowline slow" d="M206,160 L296,160"></path>
       <path class="flowline slower" d="M206,160 C240,160 250,198 296,198"></path>
 
-      <rect class="node" x="296" y="100" width="186" height="44" rx="3"></rect>
+      <rect class="node" x="296" y="100" width="186" height="42" rx="21"></rect>
       <text class="lbl-node" x="312" y="127">5 producers</text>
-      <rect class="node" x="296" y="138" width="186" height="44" rx="3"></rect>
+      <rect class="node" x="296" y="139" width="186" height="42" rx="21"></rect>
       <text class="lbl-node" x="312" y="165">~20 freelancers</text>
-      <rect class="node" x="296" y="176" width="186" height="44" rx="3"></rect>
+      <rect class="node" x="296" y="178" width="186" height="42" rx="21"></rect>
       <text class="lbl-node" x="312" y="203">Sellers, every region</text>
 
       <line class="boundary" x1="560" y1="52" x2="560" y2="268"></line>
@@ -585,9 +632,9 @@ figcaption b{color:var(--ink);font-weight:700}
       <path class="flowline slow" d="M482,160 L636,160"></path>
       <path class="flowline slower" d="M482,198 C530,198 560,160 636,160"></path>
 
-      <rect class="node-solid" x="636" y="122" width="204" height="76" rx="3" style="fill:var(--c-stanford)"></rect>
+      <rect class="node-solid" x="636" y="122" width="204" height="76" rx="38" style="fill:var(--c-stanford)"></rect>
       <text class="lbl-node-inv" x="654" y="152">4M people</text>
-      <text class="lbl-sm" x="654" y="174" fill="var(--paper)" opacity=".85">who have never met me</text>
+      <text class="lbl-sm" x="654" y="174" fill="var(--paper)" opacity=".95">who have never met me</text>
 
       <text class="lbl-sm" x="30" y="296">The whole job is making something good enough to survive the handoff.</text>
     </svg>
@@ -597,7 +644,7 @@ figcaption b{color:var(--ink);font-weight:700}
   </figure>
 
   <article class="row" data-req="multimedia curricula">
-    <header class="rowhead"><p class="kicker">03 &middot; The pipeline</p><h2>I was shortening idea-to-published before AI could help</h2></header>
+    <header class="rowhead"><p class="kicker">04 &middot; The pipeline</p><h2>I was shortening idea-to-published before AI could help</h2></header>
     <div class="prose">
       <p>Before Apple I ran creative production at Stanford's business school — YouTube and the magazine, the two things the team actually bet on. Five producers, about twenty freelancers, four million people on the other end.</p>
       <p>The relevant bit is throughput. Fifteen to twenty finished pieces a month. I tripled video output by changing how we found subjects rather than by hiring anyone. Open rates went up 80% once I finally sat down and read the audience data, which in hindsight I should have done a year earlier. And I started a faculty series nobody asked for, because there was an audience we kept missing.</p>
@@ -613,7 +660,7 @@ figcaption b{color:var(--ink);font-weight:700}
   </article>
 
   <article class="row" data-req="llm tooling">
-    <header class="rowhead"><p class="kicker">04 &middot; This page</p><h2>I could tell you I use AI. Here it is instead.</h2></header>
+    <header class="rowhead"><p class="kicker">05 &middot; This page</p><h2>I could tell you I use AI. Here it is instead.</h2></header>
     <div class="prose">
       <p>You asked for a working practice of using Claude as infrastructure, and enough technical comfort to build small things yourself. I could just say yes.</p>
       <p>Instead, here's the page. The writing, the filter at the top, both figures, the layout, the deploy — all built with Claude Code. <strong>The commits are public</strong>, so you can check my work, including the bits where I changed my mind.</p>
@@ -626,7 +673,7 @@ figcaption b{color:var(--ink);font-weight:700}
 
 
   <article class="row" data-req="cofn others">
-    <header class="rowhead"><p class="kicker">05 &middot; How I work</p><h2>The aligning is the work</h2></header>
+    <header class="rowhead"><p class="kicker">06 &middot; How I work</p><h2>The aligning is the work</h2></header>
     <div class="prose">
       <p>Every job I've had has been cross-functional, which is a polite way of saying I spend a lot of time in rooms where six teams want six different things and every one of them is right. At Apple that's Research, Finance, Enterprise, Sales, Enablement, and Product. At Apple Retail it was Brand, Industrial Design, and Legal, on launches where the packaging, the campaign, and the lawyers all had to land on the same answer on the same morning.</p>
       <p>I used to treat that as the tax you pay before the real work starts. It isn't. <strong>At any real scale, the aligning is the work</strong> — the thing a customer eventually hears is just the residue of everyone agreeing.</p>
@@ -640,7 +687,7 @@ figcaption b{color:var(--ink);font-weight:700}
   <!-- ============ FIGURE 04: alignment ============ -->
   <figure>
     <div class="fighead">
-      <p class="kicker">Figure 04</p>
+      <p class="kicker">Figure 05</p>
       <h2>Six teams, one story</h2>
     </div>
     <div class="figscroll">
@@ -685,7 +732,7 @@ figcaption b{color:var(--ink);font-weight:700}
   </figure>
 
   <article class="row" data-req="writing others">
-    <header class="rowhead"><p class="kicker">06 &middot; The creative half</p><h2>The formats are the work</h2></header>
+    <header class="rowhead"><p class="kicker">07 &middot; The creative half</p><h2>The formats are the work</h2></header>
     <div class="prose">
       <p>My degree is in fine arts. I've shown photography in Melbourne, Taipei, and London — <a href="https://www.allisonfelt.com/">that work lives here</a> — and lived in six countries in five years, which is a long stretch of being the least fluent person in every room. You don't forget what that feels like, and it turns out to be useful.</p>
       <p>Outside work I'm a photographer and a fairly stubborn endurance athlete: two Ironmans, a pile of marathons, and a seat in Oxford's first boat, which mostly taught me that being visibly bad at something in front of other people is survivable. Most of learning looks like that.</p>
@@ -697,7 +744,7 @@ figcaption b{color:var(--ink);font-weight:700}
   </article>
 
   <article class="row" data-req="tooling curricula">
-    <header class="rowhead"><p class="kicker">07 &middot; The gaps</p><h2>What I don't have</h2></header>
+    <header class="rowhead"><p class="kicker">08 &middot; The gaps</p><h2>What I don't have</h2></header>
     <div class="prose">
       <p>No learning-science degree. No cognitive-science research. No long history in AI education. Those are the two thin rows in Figure 01, and I'd rather point at them myself than have you find them.</p>
       <p>Here's my case anyway: the rarest thing on your list isn't a credential. It's having made people fluent in something and being able to prove it. <strong>I can read the learning science. Knowing what survives contact with a room you're not in took ten years and a lot of things that didn't work.</strong></p>
