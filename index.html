@@ -7,157 +7,217 @@
 <meta name="description" content="An application for the AI Fluency Education Lead role at Anthropic.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
 <style>
 :root{
-  --paper:#EEEFEA; --paper-2:#E5E7E0; --ink:#17191A; --ink-soft:#4B514D;
-  --ink-faint:#767C76; --rule:#D5D8D0; --accent:#1E4D3F; --accent-wash:rgba(30,77,63,.10);
-  --accent-line:rgba(30,77,63,.34); --shadow:rgba(23,25,26,.09);
+  --paper:#EEEFEA; --paper-2:#E4E7DE; --ink:#141715; --ink-soft:#4B514D;
+  --ink-faint:#787E78; --rule:#D2D6CC; --rule-strong:#B6BCB1;
+  --accent:#1B4E3E; --accent-bright:#20705A;
+  --accent-wash:rgba(27,78,62,.11); --accent-line:rgba(27,78,62,.34);
   --serif:"Newsreader",Georgia,"Times New Roman",serif;
   --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --paper:#121513; --paper-2:#191D1A; --ink:#E9EBE5; --ink-soft:#A8AFA8;
-    --ink-faint:#7C837C; --rule:#2A2F2B; --accent:#83C7AB; --accent-wash:rgba(131,199,171,.12);
-    --accent-line:rgba(131,199,171,.36); --shadow:rgba(0,0,0,.5);
+    --paper:#111412; --paper-2:#1A1E1B; --ink:#EBEDE7; --ink-soft:#A9B0A9;
+    --ink-faint:#7D847D; --rule:#292E2A; --rule-strong:#3C433D;
+    --accent:#86CBAE; --accent-bright:#A6DCC4;
+    --accent-wash:rgba(134,203,174,.13); --accent-line:rgba(134,203,174,.36);
   }
 }
 :root[data-theme="dark"]{
-  --paper:#121513; --paper-2:#191D1A; --ink:#E9EBE5; --ink-soft:#A8AFA8;
-  --ink-faint:#7C837C; --rule:#2A2F2B; --accent:#83C7AB; --accent-wash:rgba(131,199,171,.12);
-  --accent-line:rgba(131,199,171,.36); --shadow:rgba(0,0,0,.5);
+  --paper:#111412; --paper-2:#1A1E1B; --ink:#EBEDE7; --ink-soft:#A9B0A9;
+  --ink-faint:#7D847D; --rule:#292E2A; --rule-strong:#3C433D;
+  --accent:#86CBAE; --accent-bright:#A6DCC4;
+  --accent-wash:rgba(134,203,174,.13); --accent-line:rgba(134,203,174,.36);
 }
 *{box-sizing:border-box}
 body{
-  margin:0; background:var(--paper); color:var(--ink);
-  font-family:var(--serif); font-size:19px; line-height:1.62;
-  -webkit-font-smoothing:antialiased;
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--serif);font-size:19px;line-height:1.6;
+  -webkit-font-smoothing:antialiased
 }
-.wrap{max-width:60rem;margin:0 auto;padding:0 2rem 6rem}
+.wrap{max-width:64rem;margin:0 auto;padding:0 2rem 7rem}
 a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-line);padding-bottom:1px}
 a:hover{border-bottom-color:var(--accent)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
 
-/* ---------- masthead ---------- */
-.masthead{padding:4.5rem 0 0;display:flex;flex-wrap:wrap;gap:1.5rem 3rem;align-items:baseline}
+/* ---------------- masthead ---------------- */
+.masthead{padding:4rem 0 2rem}
 .eyebrow{
-  font-family:var(--sans);font-size:.7rem;font-weight:600;letter-spacing:.13em;
+  font-family:var(--sans);font-size:.7rem;font-weight:700;letter-spacing:.16em;
   text-transform:uppercase;color:var(--accent);margin:0
 }
 h1{
-  font-family:var(--serif);font-weight:500;font-size:clamp(2.6rem,7vw,4rem);
-  line-height:1.02;margin:.5rem 0 0;letter-spacing:-.022em;text-wrap:balance
+  font-family:var(--serif);font-weight:700;font-size:clamp(3.4rem,11vw,6.5rem);
+  line-height:.92;margin:1rem 0 0;letter-spacing:-.035em;text-wrap:balance
 }
 .standfirst{
-  font-family:var(--sans);font-size:.85rem;color:var(--ink-soft);
-  margin:.9rem 0 0;line-height:1.7
+  font-family:var(--sans);font-size:.85rem;font-weight:500;color:var(--ink-soft);
+  margin:1.4rem 0 0
 }
-.standfirst a{font-weight:500}
+.rule-heavy{height:6px;background:var(--ink);margin:2rem 0 0;border:0}
 
-/* ---------- the quoted bar ---------- */
+/* ---------------- thesis ---------------- */
 .thesis{
-  margin:3.25rem 0 0;padding:1.75rem 0 0;border-top:1px solid var(--rule);
-  display:grid;grid-template-columns:minmax(0,34rem) minmax(0,15rem);gap:0 3.25rem;align-items:start
+  margin:3rem 0 0;display:grid;
+  grid-template-columns:minmax(0,36rem) minmax(0,16rem);gap:0 3.5rem;align-items:start
 }
 blockquote{
-  margin:0;font-size:1.32rem;line-height:1.48;font-style:italic;font-weight:400;
-  color:var(--ink);text-wrap:pretty
+  margin:0;font-size:clamp(1.4rem,3vw,1.85rem);line-height:1.32;font-weight:500;
+  letter-spacing:-.015em;text-wrap:pretty
 }
-blockquote em{font-style:normal;font-weight:600;background:var(--accent-wash);
-  box-shadow:0 0 0 .18em var(--accent-wash);border-radius:1px}
-.cite{font-family:var(--sans);font-size:.74rem;color:var(--ink-faint);margin:.85rem 0 0;letter-spacing:.02em}
+blockquote em{
+  font-style:normal;font-weight:700;color:var(--accent);
+  background:var(--accent-wash);box-shadow:0 0 0 .2em var(--accent-wash)
+}
+.cite{font-family:var(--sans);font-size:.75rem;font-weight:500;color:var(--ink-faint);margin:1.1rem 0 0}
+.answer{
+  font-family:var(--sans);font-size:.86rem;line-height:1.62;color:var(--ink-soft);
+  border-left:3px solid var(--accent);padding-left:1.1rem
+}
+.answer b{
+  display:block;font-size:.68rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:.5rem
+}
 
-/* ---------- filter ---------- */
-.filter{margin:3.25rem 0 0;padding:1.5rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
-.filter-label{font-family:var(--sans);font-size:.72rem;font-weight:600;letter-spacing:.11em;
-  text-transform:uppercase;color:var(--ink-faint);margin:0 0 .9rem}
-.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+/* ---------------- stat band ---------------- */
+.band{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;
+  margin:3.5rem 0 0;padding:2.25rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)
+}
+.band div{display:flex;flex-direction:column;gap:.55rem}
+.band .n{
+  font-family:var(--mono);font-variant-numeric:tabular-nums;
+  font-size:clamp(3.2rem,8vw,5rem);font-weight:600;line-height:.86;
+  letter-spacing:-.05em;color:var(--accent)
+}
+.band .t{font-family:var(--sans);font-size:.88rem;font-weight:600;color:var(--ink);line-height:1.4}
+.band .s{font-family:var(--sans);font-size:.75rem;font-weight:500;color:var(--ink-faint)}
+
+/* ---------------- filter ---------------- */
+.filter{margin:3.5rem 0 0;padding:1.75rem 0;border-top:2px solid var(--ink);border-bottom:1px solid var(--rule)}
+.filter-label{
+  font-family:var(--sans);font-size:.7rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-faint);margin:0 0 1rem
+}
+.chips{display:flex;flex-wrap:wrap;gap:.55rem}
 .chip{
-  font-family:var(--sans);font-size:.79rem;font-weight:500;color:var(--ink-soft);
-  background:transparent;border:1px solid var(--rule);border-radius:999px;
-  padding:.4rem .85rem;cursor:pointer;transition:background .16s,color .16s,border-color .16s
+  font-family:var(--sans);font-size:.82rem;font-weight:600;color:var(--ink-soft);
+  background:transparent;border:1.5px solid var(--rule-strong);border-radius:2px;
+  padding:.5rem .9rem;cursor:pointer;transition:background .16s,color .16s,border-color .16s
 }
-.chip:hover{border-color:var(--accent-line);color:var(--ink)}
+.chip:hover{border-color:var(--accent);color:var(--ink)}
 .chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--paper)}
-.filter-status{font-family:var(--sans);font-size:.76rem;color:var(--ink-faint);margin:.9rem 0 0;min-height:1.2em}
-.filter-status b{color:var(--ink-soft);font-weight:600}
+.filter-status{font-family:var(--sans);font-size:.8rem;color:var(--ink-faint);margin:1rem 0 0;min-height:1.2em}
+.filter-status b{color:var(--ink);font-weight:700}
 
-/* ---------- letter body ---------- */
-.letter{margin:0}
+/* ---------------- letter rows ---------------- */
 .row{
-  display:grid;grid-template-columns:minmax(0,34rem) minmax(0,15rem);gap:0 3.25rem;
-  align-items:start;padding:2.6rem 0;border-bottom:1px solid var(--rule);
+  display:grid;grid-template-columns:minmax(0,36rem) minmax(0,16rem);gap:0 3.5rem;
+  align-items:start;padding:3.25rem 0;border-bottom:1px solid var(--rule);
   transition:opacity .28s ease
 }
-.row:last-of-type{border-bottom:0}
-.row.dim{opacity:.26}
-.row.hit .prose>p:first-of-type{box-shadow:-1.15rem 0 0 var(--accent-wash),1.15rem 0 0 var(--accent-wash);background:var(--accent-wash)}
+.row.dim{opacity:.24}
+.rowhead{grid-column:1/-1;margin:0 0 1.75rem}
+.kicker{
+  font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 .5rem
+}
 h2{
-  font-family:var(--sans);font-size:.72rem;font-weight:600;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--accent);margin:0 0 1rem
+  font-family:var(--serif);font-weight:700;font-size:clamp(2.1rem,5vw,3.1rem);
+  line-height:1.02;letter-spacing:-.028em;margin:0;text-wrap:balance
 }
-.prose p{margin:0 0 1.15rem;text-wrap:pretty}
+.prose p{margin:0 0 1.2rem;text-wrap:pretty}
 .prose p:last-child{margin-bottom:0}
-.prose strong{font-weight:600}
-.lede{font-size:1.12rem;line-height:1.55}
+.prose strong{font-weight:700}
+.lede{font-size:1.18rem;line-height:1.5;font-weight:500}
+.dropcap::first-letter{
+  float:left;font-size:4.6rem;line-height:.82;font-weight:700;
+  padding:.05em .1em 0 0;color:var(--accent)
+}
 
-/* ---------- margin receipts ---------- */
-.note{font-family:var(--sans);font-size:.8rem;line-height:1.6;color:var(--ink-soft)}
-.note dl{margin:0;display:grid;gap:1.05rem}
+/* ---------------- margin receipts ---------------- */
+.note{font-family:var(--sans);font-size:.82rem;line-height:1.58;color:var(--ink-soft)}
+.note dl{margin:0;display:grid;gap:2rem}
 .note dt{
-  font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:1.42rem;
-  font-weight:500;color:var(--ink);line-height:1.05;letter-spacing:-.02em
+  font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:2.9rem;
+  font-weight:600;color:var(--accent);line-height:.95;letter-spacing:-.045em
 }
-.note dd{margin:.3rem 0 0;color:var(--ink-soft)}
-.note .src{display:block;margin-top:.35rem;font-size:.72rem;color:var(--ink-faint)}
-.note .plain{color:var(--ink-soft)}
-.note .plain b{display:block;font-family:var(--sans);font-size:.72rem;font-weight:600;
-  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:.4rem}
+.note dd{margin:.55rem 0 0}
+.note .src{display:block;margin-top:.3rem;font-size:.72rem;color:var(--ink-faint)}
+.note .plain b{
+  display:block;font-size:.68rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-faint);margin-bottom:.45rem
+}
 
-/* ---------- colophon ---------- */
-.colophon{margin-top:3.5rem;padding:2.25rem 2rem;background:var(--paper-2);border-radius:3px}
-.colophon h2{margin-bottom:.85rem}
-.colophon .prose{max-width:34rem}
-.colophon p{font-size:.95rem}
-.steps{margin:1.4rem 0 0;padding:0;list-style:none;display:grid;gap:.7rem;font-family:var(--sans);font-size:.83rem;color:var(--ink-soft)}
-.steps li{display:grid;grid-template-columns:auto 1fr;gap:.7rem;align-items:baseline}
-.steps code{font-family:var(--mono);font-size:.78rem;color:var(--accent);background:var(--accent-wash);padding:.12rem .38rem;border-radius:2px}
+/* ---------------- figures ---------------- */
+figure{margin:0;padding:3.25rem 0;border-bottom:1px solid var(--rule)}
+figure svg{display:block;width:100%;max-width:100%;height:auto;color:var(--ink)}
+.figscroll{overflow-x:auto}
+figcaption{
+  font-family:var(--sans);font-size:.85rem;line-height:1.6;color:var(--ink-soft);
+  margin:1.5rem 0 0;max-width:38rem
+}
+figcaption b{color:var(--ink);font-weight:700}
+.fighead{margin:0 0 2rem}
 
-/* ---------- signoff ---------- */
-.signoff{margin-top:3.5rem;padding-top:2.25rem;border-top:2px solid var(--ink)}
-.signoff p{max-width:34rem}
-.sig{font-family:var(--serif);font-style:italic;font-size:1.5rem;margin:1.5rem 0 .3rem}
-.contact{font-family:var(--sans);font-size:.85rem;color:var(--ink-soft);margin:0}
+/* svg semantics */
+.mark-full{fill:var(--accent);stroke:none}
+.mark-part{fill:none;stroke:var(--accent);stroke-width:1.6}
+.gridline{stroke:var(--rule);stroke-width:1}
+.axis{stroke:var(--ink);stroke-width:2}
+.tick{stroke:var(--rule-strong);stroke-width:1}
+.lbl{font-family:var(--sans);font-size:12px;font-weight:500;fill:var(--ink-soft)}
+.lbl-row{font-family:var(--sans);font-size:12.5px;font-weight:600;fill:var(--ink)}
+.lbl-sm{font-family:var(--sans);font-size:11px;font-weight:500;fill:var(--ink-faint)}
+.lbl-yr{font-family:var(--mono);font-size:11px;font-weight:500;fill:var(--ink-faint)}
+.bar{fill:var(--accent-wash);stroke:var(--accent);stroke-width:1.5}
+.bar-now{fill:var(--accent)}
+.mrow{transition:opacity .22s ease}
+.matrix.filtered .mrow:not(.on){opacity:.18}
 
-@media (max-width:900px){
+/* ---------------- colophon + signoff ---------------- */
+.colophon{margin-top:4rem;padding:2.75rem 2.25rem;background:var(--paper-2);border-left:6px solid var(--accent)}
+.colophon .kicker{margin-bottom:.5rem}
+.colophon h2{font-size:clamp(1.7rem,3.6vw,2.3rem);margin-bottom:1.1rem}
+.colophon p{font-size:1rem;max-width:36rem;margin:0}
+.steps{margin:1.75rem 0 0;padding:0;list-style:none;display:grid;gap:.85rem;
+  font-family:var(--sans);font-size:.86rem;color:var(--ink-soft);max-width:36rem}
+.steps li{display:grid;grid-template-columns:2.4rem 1fr;gap:.6rem;align-items:baseline}
+.steps code{font-family:var(--mono);font-size:.78rem;font-weight:600;color:var(--accent)}
+
+.signoff{margin-top:4rem;padding-top:2.5rem;border-top:6px solid var(--ink)}
+.signoff p{max-width:36rem;font-size:1.18rem;line-height:1.5;font-weight:500}
+.sig{font-family:var(--serif);font-style:italic;font-weight:600;font-size:2.4rem;margin:1.75rem 0 .4rem;letter-spacing:-.02em}
+.contact{font-family:var(--sans);font-size:.85rem;font-weight:500;color:var(--ink-soft);margin:0}
+
+@media (max-width:920px){
   body{font-size:18px}
-  .wrap{padding:0 1.4rem 4rem}
-  .thesis,.row{grid-template-columns:1fr;gap:1.6rem}
+  .band{grid-template-columns:1fr;gap:2.25rem}
+  .note dt{font-size:2.4rem}
+  .wrap{padding:0 1.35rem 4rem}
+  .thesis,.row{grid-template-columns:1fr;gap:1.9rem}
   .note{border-left:2px solid var(--accent-line);padding-left:1rem}
-  .note dt{font-size:1.3rem}
-  .row.hit .prose>p:first-of-type{box-shadow:none}
+  .figscroll svg{min-width:660px}
 }
-@media (prefers-reduced-motion:reduce){
-  *{transition:none!important;animation:none!important}
-}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
   <header class="masthead">
-    <div>
-      <p class="eyebrow">Application &middot; AI Fluency Education Lead</p>
-      <h1>Allison Felt</h1>
-      <p class="standfirst">
-        San Francisco &nbsp;·&nbsp;
-        <a href="mailto:allisonfelt@gmail.com">allisonfelt@gmail.com</a> &nbsp;·&nbsp;
-        <a href="https://www.allisonfelt.com/">allisonfelt.com</a> &nbsp;·&nbsp;
-        <a href="https://www.linkedin.com/in/allison-lee-felt/">LinkedIn</a>
-      </p>
-    </div>
+    <p class="eyebrow">Application &middot; AI Fluency Education Lead</p>
+    <h1>Allison<br>Felt</h1>
+    <p class="standfirst">
+      San Francisco &nbsp;·&nbsp;
+      <a href="mailto:allisonfelt@gmail.com">allisonfelt@gmail.com</a> &nbsp;·&nbsp;
+      <a href="https://www.allisonfelt.com/">allisonfelt.com</a> &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/allison-lee-felt/">LinkedIn</a>
+    </p>
+    <hr class="rule-heavy">
   </header>
 
   <section class="thesis">
@@ -165,9 +225,13 @@ h2{
       <blockquote>“You don't need a background in AI or a degree in education, but you do need to have <em>made people fluent in something before at scale</em>.”</blockquote>
       <p class="cite">— From the job description for this role</p>
     </div>
-    <div class="note">
-      <p class="plain"><b>My answer</b>I built a four-week program at Apple to close a gap nobody had named yet, taught it to a sales organization, and measured what it changed.</p>
-    </div>
+    <p class="answer"><b>My answer</b>I built a four-week program at Apple to close a gap nobody had named yet, taught it to a sales organization, and measured what it changed.</p>
+  </section>
+
+  <section class="band">
+    <div><span class="n">24%</span><span class="t">average knowledge lift</span><span class="s">Elevate, the program I built at Apple</span></div>
+    <div><span class="n">4M</span><span class="t">audience reached</span><span class="s">Stanford GSB, two channels I owned</span></div>
+    <div><span class="n">3M+</span><span class="t">units positioned</span><span class="s">Apple Education, Mac and iPad</span></div>
   </section>
 
   <section class="filter">
@@ -183,110 +247,250 @@ h2{
     <p class="filter-status" id="status">Showing the whole letter. Pick a requirement and it will surface the evidence.</p>
   </section>
 
-  <main class="letter" id="letter">
+  <main id="letter">
 
-    <article class="row" data-req="curricula others">
-      <div class="prose">
-        <h2>The program</h2>
-        <p class="lede">At Apple Education I kept watching capable people give inconsistent answers about products they had sold for years. The gap wasn't effort or motivation. It was that nobody had ever built them a way to understand the thing they were explaining.</p>
-        <p>So I built one. <strong>Elevate</strong> is a four-week enablement program I proposed, designed, and shipped — not a deck handed to a training team, but the curriculum, the sequencing, and the call on what to leave out. It ran against a real question: could people explain the product correctly a month later, without me in the room?</p>
-        <p>They could. Average knowledge lift of <strong>24%</strong>, and the program earned the organization's 2025 Impact Award, selected from more than 500 candidates. I mention the measurement rather than the award because you wrote that completion is not comprehension and comprehension is not changed behavior. I agree, which is why I instrumented for it before I needed to defend it.</p>
-      </div>
-      <aside class="note">
-        <dl>
-          <div><dt>24%</dt><dd>average knowledge lift across the cohort<span class="src">Elevate, Apple, 2025</span></dd></div>
-          <div><dt>4 weeks</dt><dd>program length, built from nothing<span class="src">proposed, designed, and delivered</span></dd></div>
-          <div><dt>500+</dt><dd>candidates considered for the Impact Award it won<span class="src">Apple organizational award, 2025</span></dd></div>
-        </dl>
-      </aside>
-    </article>
+  <!-- ============ FIGURE 1: coverage matrix ============ -->
+  <figure>
+    <div class="fighead">
+      <p class="kicker">Figure 01</p>
+      <h2>Where the evidence is</h2>
+    </div>
+    <div class="figscroll">
+    <svg viewBox="80 0 740 470" role="img" aria-label="Grid mapping six job requirements against six pieces of evidence. Direct evidence is marked with a filled dot, adjacent evidence with a hollow dot, and no evidence is left blank. The rows for LLMs as infrastructure and building light tooling are nearly empty apart from this page.">
+      <!-- column headers, angled -->
+      <g class="lbl">
+        <text x="352" y="150" transform="rotate(-42 352 150)">Elevate</text>
+        <text x="432" y="150" transform="rotate(-42 432 150)">Apple Education</text>
+        <text x="512" y="150" transform="rotate(-42 512 150)">Stanford GSB</text>
+        <text x="592" y="150" transform="rotate(-42 592 150)">Google</text>
+        <text x="672" y="150" transform="rotate(-42 672 150)">AWS</text>
+        <text x="752" y="150" transform="rotate(-42 752 150)">This page</text>
+      </g>
 
-    <article class="row" data-req="writing others">
-      <div class="prose">
-        <h2>The audience</h2>
-        <p>You name nurses, teachers, small business owners, policymakers. I have spent three years writing for one of those groups in earnest. As Communications Lead for Apple Education I own positioning across Mac and iPad for K‑12 and higher education — three million units and change — which means the daily work is taking something technical and finding the version of it that lands with a district administrator who has forty minutes and no patience for a spec sheet.</p>
-        <p>That work is unglamorous in a specific way I think matters here. The messaging framework only earns its keep when a salesperson in another country, whom I will never meet, uses it and gets it right. Most of my job is writing things that other people deliver.</p>
-      </div>
-      <aside class="note">
-        <dl>
-          <div><dt>3M+</dt><dd>units across Mac and iPad in the segments I position<span class="src">Apple Education</span></dd></div>
-          <div><dt>K–12 &amp; HE</dt><dd>two distinct audiences, two vocabularies<span class="src">2023 – present</span></dd></div>
-        </dl>
-      </aside>
-    </article>
+      <!-- rows -->
+      <g class="matrix" id="matrix">
+        <g class="mrow" data-req="curricula">
+          <line class="gridline" x1="340" y1="186" x2="764" y2="186"></line>
+          <text class="lbl-row" x="324" y="190" text-anchor="end">Curricula for adult learners at scale</text>
+          <circle class="mark-full" cx="352" cy="186" r="6.5"></circle>
+          <circle class="mark-part" cx="432" cy="186" r="6"></circle>
+          <circle class="mark-part" cx="512" cy="186" r="6"></circle>
+        </g>
+        <g class="mrow" data-req="writing">
+          <line class="gridline" x1="340" y1="232" x2="764" y2="232"></line>
+          <text class="lbl-row" x="324" y="236" text-anchor="end">Writing for general audiences</text>
+          <circle class="mark-full" cx="352" cy="232" r="6.5"></circle>
+          <circle class="mark-full" cx="432" cy="232" r="6.5"></circle>
+          <circle class="mark-full" cx="512" cy="232" r="6.5"></circle>
+          <circle class="mark-part" cx="592" cy="232" r="6"></circle>
+          <circle class="mark-full" cx="752" cy="232" r="6.5"></circle>
+        </g>
+        <g class="mrow" data-req="multimedia">
+          <line class="gridline" x1="340" y1="278" x2="764" y2="278"></line>
+          <text class="lbl-row" x="324" y="282" text-anchor="end">Multimedia, end to end</text>
+          <circle class="mark-part" cx="352" cy="278" r="6"></circle>
+          <circle class="mark-part" cx="432" cy="278" r="6"></circle>
+          <circle class="mark-full" cx="512" cy="278" r="6.5"></circle>
+          <circle class="mark-part" cx="592" cy="278" r="6"></circle>
+          <circle class="mark-part" cx="752" cy="278" r="6"></circle>
+        </g>
+        <g class="mrow" data-req="llm">
+          <line class="gridline" x1="340" y1="324" x2="764" y2="324"></line>
+          <text class="lbl-row" x="324" y="328" text-anchor="end">LLMs as infrastructure</text>
+          <circle class="mark-full" cx="752" cy="324" r="6.5"></circle>
+        </g>
+        <g class="mrow" data-req="tooling">
+          <line class="gridline" x1="340" y1="370" x2="764" y2="370"></line>
+          <text class="lbl-row" x="324" y="374" text-anchor="end">Builds light tooling herself</text>
+          <circle class="mark-part" cx="592" cy="370" r="6"></circle>
+          <circle class="mark-part" cx="672" cy="370" r="6"></circle>
+          <circle class="mark-full" cx="752" cy="370" r="6.5"></circle>
+        </g>
+        <g class="mrow" data-req="others">
+          <line class="gridline" x1="340" y1="416" x2="764" y2="416"></line>
+          <text class="lbl-row" x="324" y="420" text-anchor="end">Makes things other people teach</text>
+          <circle class="mark-full" cx="352" cy="416" r="6.5"></circle>
+          <circle class="mark-full" cx="432" cy="416" r="6.5"></circle>
+          <circle class="mark-full" cx="512" cy="416" r="6.5"></circle>
+          <circle class="mark-part" cx="592" cy="416" r="6"></circle>
+        </g>
+      </g>
 
-    <article class="row" data-req="multimedia curricula">
-      <div class="prose">
-        <h2>The pipeline</h2>
-        <p>Before Apple I ran creative production at Stanford Graduate School of Business, where I was promoted to own the two channels the team invested in most: YouTube and <em>Stanford Business</em> magazine. Five producers, roughly twenty freelancers, a combined audience near four million.</p>
-        <p>The relevant part is throughput. We moved to fifteen to twenty finished pieces a month across web, video, email, print, and social; I tripled video production by changing how we sourced subjects rather than by hiring; email open rates went up 80% once I actually looked at the audience data; and we shipped the first digital edition of the magazine, which came back 98% positive. I also started a faculty video series nobody had asked for, because there was an audience segment we were not reaching.</p>
-        <p>You wrote that you want the distance from an idea to a published piece to keep getting shorter while quality goes up. That was my job for two years, before there was any AI to help with it.</p>
-      </div>
-      <aside class="note">
-        <dl>
-          <div><dt>4M</dt><dd>combined audience across the two channels<span class="src">Stanford GSB</span></dd></div>
-          <div><dt>15–20</dt><dd>finished pieces shipped per month<span class="src">web, video, email, print, social</span></dd></div>
-          <div><dt>3×</dt><dd>increase in video production<span class="src">without added headcount</span></dd></div>
-          <div><dt>+80%</dt><dd>email open rate, from audience data<span class="src">not from more sending</span></dd></div>
-        </dl>
-      </aside>
-    </article>
+      <!-- legend -->
+      <g>
+        <circle class="mark-full" cx="352" cy="455" r="6.5"></circle>
+        <text class="lbl-sm" x="366" y="459">direct evidence</text>
+        <circle class="mark-part" cx="492" cy="455" r="6"></circle>
+        <text class="lbl-sm" x="506" y="459">adjacent</text>
+        <text class="lbl-sm" x="600" y="459">blank = nothing to show</text>
+      </g>
+    </svg>
+    </div>
+    <figcaption><b>The two thin rows are the honest part.</b> Everything I can prove about working with AI comes from recent work, including this page. The rest of the grid is a decade deep. I'd rather you see that shape now than discover it in an interview.</figcaption>
+  </figure>
 
-    <article class="row" data-req="llm tooling">
-      <div class="prose">
-        <h2>This page</h2>
-        <p>You asked for a working practice of using Claude as infrastructure, and enough technical comfort to build light tooling without being intimidated by it. I could claim both. Instead this page is the artifact.</p>
-        <p>I built it with Claude Code — the writing, the interaction you just used, the layout system, the deploy. Not a template with my name dropped in. The version history is public, so the claim is auditable in a way a bullet point isn't: you can read the commits and see exactly how much of this was me directing and how much was me typing.</p>
-        <p>I'm not an engineer and this isn't an engineering role. But the filter above is real state management, the type system is deliberate, and the whole thing is a repository rather than a page builder. That was the point of doing it this way.</p>
-      </div>
-      <aside class="note">
-        <p class="plain"><b>Auditable</b>Source and full commit history at <a href="https://github.com/allisonfelt/AI-Fluency-Education-Lead-Application">github.com/allisonfelt</a> — built in the open, reviewable line by line.</p>
-      </aside>
-    </article>
+  <!-- ============ letter ============ -->
+  <article class="row" data-req="curricula others">
+    <header class="rowhead"><p class="kicker">01 &middot; The program</p><h2>I built the thing and then measured it</h2></header>
+    <div class="prose">
+      <p class="lede dropcap">At Apple Education, capable people kept giving inconsistent answers about products they had sold for years. Nobody had built them a way to understand what they were explaining.</p>
+      <p>So I built one. <strong>Elevate</strong> is a four-week program I proposed, designed, and shipped — curriculum, sequencing, and the call on what to leave out. It ran against one question: could people explain the product correctly a month later, without me in the room?</p>
+      <p>They could. <strong>24% average knowledge lift.</strong> It won the organization's 2025 Impact Award from 500+ candidates, but the measurement is the part that matters. You wrote that completion is not comprehension. I instrumented for that before I had to defend it.</p>
+    </div>
+    <aside class="note">
+      <dl>
+        <div><dt>24%</dt><dd>average knowledge lift across the cohort<span class="src">Elevate, Apple, 2025</span></dd></div>
+        <div><dt>4 weeks</dt><dd>program length, built from nothing<span class="src">proposed, designed, delivered</span></dd></div>
+        <div><dt>500+</dt><dd>candidates considered for the award it won<span class="src">Apple Impact Award, 2025</span></dd></div>
+      </dl>
+    </aside>
+  </article>
 
-    <article class="row" data-req="writing others">
-      <div class="prose">
-        <h2>The creative half</h2>
-        <p>My degree is in fine arts, not marketing. I've exhibited photography in Melbourne, Taipei, and London. I lived in six countries in five years and learned, repeatedly, what it feels like to be the least fluent person in a room — which is a useful thing for a teacher to remember from the inside rather than infer.</p>
-        <p>You wrote that most AI education still looks like an online course from 2015, and that the subject and the medium shouldn't be that far apart. I read that as the most interesting sentence in the posting. The formats are the work. I'd rather invent one than fill one in.</p>
-      </div>
-      <aside class="note">
-        <p class="plain"><b>Elsewhere</b>Exhibited in three countries. Two-time Ironman finisher. First boat, Oxford rowing. Oxford MBA; BA in fine arts with distinction, one of three selected by faculty.</p>
-      </aside>
-    </article>
+  <!-- ============ FIGURE 2: timeline ============ -->
+  <figure>
+    <div class="fighead">
+      <p class="kicker">Figure 02</p>
+      <h2>Same job, different names</h2>
+    </div>
+    <div class="figscroll">
+    <svg viewBox="0 0 900 340" role="img" aria-label="Timeline from 2019 to the present showing four roles: Stanford Graduate School of Business, an Oxford MBA including an AWS summer, Google Chromebooks, and Apple Education. Beneath each role is the audience being taught.">
+      <defs>
+        <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+        </marker>
+      </defs>
 
-    <article class="row" data-req="tooling curricula">
-      <div class="prose">
-        <h2>What I don't have</h2>
-        <p>No degree in learning science, no research background in cognitive science, and until recently no professional history with AI education specifically. Those are real gaps and I'd rather name them than let you find them.</p>
-        <p>What I'd argue is that the rarest requirement in your posting isn't any of those. It's having made people fluent in something and proved it. Learning science I can read. The instinct for what makes a thing land when you're not in the room took me a decade of shipping to build.</p>
-      </div>
-      <aside class="note">
-        <p class="plain"><b>Also relevant</b>Built a taxonomy and weighted evaluation framework across 1,000+ startups at AWS. Defined content strategy and success metrics for a new in-product experience at Google. Systems, not just campaigns.</p>
-      </aside>
-    </article>
+      <!-- role bars -->
+      <g>
+        <rect class="bar" x="70" y="86" width="234" height="30" rx="2"></rect>
+        <text class="lbl-row" x="80" y="106">Stanford GSB</text>
+        <rect class="bar" x="314" y="86" width="107" height="30" rx="2"></rect>
+        <text class="lbl-row" x="324" y="106">Oxford MBA</text>
+        <rect class="bar" x="450" y="86" width="49" height="30" rx="2"></rect>
+        <text class="lbl-row" x="450" y="76">Google</text>
+        <rect class="bar bar-now" x="499" y="86" width="327" height="30" rx="2"></rect>
+        <text class="lbl-row" x="510" y="106" fill="var(--paper)">Apple Education</text>
+      </g>
+
+      <!-- axis -->
+      <line class="axis" x1="60" y1="140" x2="846" y2="140" marker-end="url(#arw)"></line>
+      <g class="lbl-yr">
+        <line class="tick" x1="70"  y1="140" x2="70"  y2="147"></line><text x="70"  y="162" text-anchor="middle">2019</text>
+        <line class="tick" x1="265" y1="140" x2="265" y2="147"></line><text x="265" y="162" text-anchor="middle">2021</text>
+        <line class="tick" x1="362" y1="140" x2="362" y2="147"></line><text x="362" y="162" text-anchor="middle">2022</text>
+        <line class="tick" x1="460" y1="140" x2="460" y2="147"></line><text x="460" y="162" text-anchor="middle">2023</text>
+        <line class="tick" x1="752" y1="140" x2="752" y2="147"></line><text x="752" y="162" text-anchor="middle">2026</text>
+      </g>
+
+      <!-- audience lane -->
+      <text class="lbl-sm" x="60" y="206" style="font-weight:700;letter-spacing:.12em;text-transform:uppercase">Who I was teaching</text>
+      <g class="lbl">
+        <line class="gridline" x1="70" y1="224" x2="304" y2="224"></line>
+        <text x="70" y="246">4M readers and viewers</text>
+        <text class="lbl-sm" x="70" y="264">15–20 pieces a month, 5 producers, ~20 freelancers</text>
+
+        <line class="gridline" x1="314" y1="224" x2="421" y2="224"></line>
+        <text x="314" y="246">1,000+ startups</text>
+        <text class="lbl-sm" x="314" y="264">mapped and ranked, AWS</text>
+
+        <line class="gridline" x1="450" y1="224" x2="499" y2="224"></line>
+        <text x="450" y="246">Schools</text>
+        <text class="lbl-sm" x="450" y="264">Chromebook discovery</text>
+
+        <line class="gridline" x1="509" y1="224" x2="826" y2="224"></line>
+        <text x="509" y="246">K–12 and higher-ed decision makers, then Apple's own sellers</text>
+        <text class="lbl-sm" x="509" y="264">3M+ units positioned; Elevate taught to the sales organization</text>
+      </g>
+
+      <text class="lbl-sm" x="60" y="312">Every role: take something complicated, find the version a specific audience can use, ship it at volume.</text>
+    </svg>
+    </div>
+    <figcaption><b>Nothing here was an AI job.</b> That's the point — the skill you're hiring for is older than the technology, and I've been practising it since 2019 on audiences who had no obligation to pay attention.</figcaption>
+  </figure>
+
+  <article class="row" data-req="writing others">
+    <header class="rowhead"><p class="kicker">02 &middot; The audience</p><h2>I already write for people who aren't us</h2></header>
+    <div class="prose">
+      <p>You name nurses, teachers, small business owners, policymakers. I've spent three years writing for one of them. At Apple Education I own positioning across Mac and iPad for K‑12 and higher education — three million units — which means finding the version of a technical idea that lands with a district administrator who has forty minutes and no patience for a spec sheet.</p>
+      <p>The framework only earns its keep when a seller in another country I'll never meet uses it and gets it right. <strong>Most of my job is writing things other people deliver.</strong></p>
+    </div>
+    <aside class="note">
+      <dl>
+        <div><dt>3M+</dt><dd>units across Mac and iPad in the segments I position<span class="src">Apple Education</span></dd></div>
+        <div><dt>2</dt><dd>distinct audiences, two vocabularies: K–12 and higher ed<span class="src">2023 – present</span></dd></div>
+      </dl>
+    </aside>
+  </article>
+
+  <article class="row" data-req="multimedia curricula">
+    <header class="rowhead"><p class="kicker">03 &middot; The pipeline</p><h2>Shortening idea-to-published was my job before AI could help</h2></header>
+    <div class="prose">
+      <p>Before Apple I ran creative production at Stanford GSB, promoted to own the two channels the team invested in most: YouTube and <em>Stanford Business</em> magazine. Five producers, twenty freelancers, four million people.</p>
+      <p>The relevant part is throughput. Fifteen to twenty finished pieces a month. I tripled video output by changing how we sourced subjects, not by hiring. Open rates rose 80% once I looked at the audience data. And I started a faculty series nobody asked for, because we were missing a segment.</p>
+    </div>
+    <aside class="note">
+      <dl>
+        <div><dt>4M</dt><dd>combined audience across the two channels<span class="src">Stanford GSB</span></dd></div>
+        <div><dt>15–20</dt><dd>finished pieces shipped per month<span class="src">web, video, email, print, social</span></dd></div>
+        <div><dt>3×</dt><dd>increase in video production<span class="src">without added headcount</span></dd></div>
+        <div><dt>+80%</dt><dd>email open rate, from audience data<span class="src">not from more sending</span></dd></div>
+      </dl>
+    </aside>
+  </article>
+
+  <article class="row" data-req="llm tooling">
+    <header class="rowhead"><p class="kicker">04 &middot; This page</p><h2>I could claim the AI part. Instead, here it is.</h2></header>
+    <div class="prose">
+      <p>You asked for a working practice of using Claude as infrastructure, and enough technical comfort to build light tooling. I could claim both.</p>
+      <p>I built this page with Claude Code — the writing, the filter, both figures, the layout, the deploy. <strong>The commit history is public</strong>, so the claim is auditable in a way a bullet point isn't.</p>
+      <p>Not an engineer, and this isn't an engineering role. But the filter is real state, the figures are hand-authored SVG on a shared grid, and this is a repository rather than a page builder.</p>
+    </div>
+    <aside class="note">
+      <p class="plain"><b>Auditable</b>Source and full commit history at <a href="https://github.com/allisonfelt/AI-Fluency-Education-Lead-Application">the repository for this page</a> — every revision, reviewable line by line.</p>
+    </aside>
+  </article>
+
+  <article class="row" data-req="writing others">
+    <header class="rowhead"><p class="kicker">05 &middot; The creative half</p><h2>The formats are the work</h2></header>
+    <div class="prose">
+      <p>My degree is in fine arts. I've exhibited photography in Melbourne, Taipei, and London, and lived in six countries in five years — long enough to know from the inside what it feels like to be the least fluent person in the room.</p>
+      <p>You wrote that most AI education still looks like an online course from 2015. That's the most interesting sentence in the posting. <strong>I'd rather invent a format than fill one in.</strong></p>
+    </div>
+    <aside class="note">
+      <p class="plain"><b>Elsewhere</b>Exhibited in three countries. Two-time Ironman finisher. First boat, Oxford rowing. Oxford MBA; BA in fine arts with distinction, one of three selected by faculty.</p>
+    </aside>
+  </article>
+
+  <article class="row" data-req="tooling curricula">
+    <header class="rowhead"><p class="kicker">06 &middot; The gaps</p><h2>What I don't have</h2></header>
+    <div class="prose">
+      <p>No learning-science degree, no cognitive-science research, no long history in AI education. Those are the two thin rows in Figure 01, and I'd rather name them than let you find them.</p>
+      <p>But the rarest thing in your posting isn't any of those. It's having made people fluent and proved it. <strong>Learning science I can read. Knowing what lands when you're not in the room took a decade of shipping.</strong></p>
+    </div>
+    <aside class="note">
+      <p class="plain"><b>Also relevant</b>Built a taxonomy and weighted evaluation framework across 1,000+ startups at AWS. Defined content strategy and success metrics for a new in-product experience at Google. Systems, not just campaigns.</p>
+    </aside>
+  </article>
 
   </main>
 
   <section class="colophon">
-    <h2>Colophon</h2>
-    <div class="prose">
-      <p>Written and built by me, with Claude Code as the production environment. Anthropic's candidate guidelines invite collaboration with Claude, so it seemed strange to write about AI fluency in a text editor.</p>
-    </div>
+    <p class="kicker">Colophon</p>
+    <h2>How this page was made</h2>
+    <p>Written and built by me, with Claude Code as the production environment. Anthropic's candidate guidelines invite collaboration with Claude, and it seemed strange to write about AI fluency in a text editor.</p>
     <ul class="steps">
       <li><code>01</code><span>Drafted the argument against the job description, requirement by requirement.</span></li>
-      <li><code>02</code><span>Designed the type and color system before writing a line of layout.</span></li>
+      <li><code>02</code><span>Set the type and colour system before writing a line of layout.</span></li>
       <li><code>03</code><span>Built the requirement filter by hand — no framework, no dependencies.</span></li>
-      <li><code>04</code><span>Deployed from the repository. Every revision is in the history.</span></li>
+      <li><code>04</code><span>Hand-authored both figures as SVG on a shared grid.</span></li>
+      <li><code>05</code><span>Deployed from the repository. Every revision is in the history.</span></li>
     </ul>
   </section>
 
   <section class="signoff">
-    <div class="prose">
-      <p>I've spent my career making complicated things understandable to people who don't have time to be experts in them, and measuring whether it worked. That's the job you posted. I'd like to do it here.</p>
-      <p class="sig">Allison Felt</p>
-      <p class="contact"><a href="mailto:allisonfelt@gmail.com">allisonfelt@gmail.com</a> &nbsp;·&nbsp; San Francisco, CA</p>
-    </div>
+    <p>I've spent my career making complicated things understandable to people who don't have time to be experts in them, and measuring whether it worked. That's the job you posted. I'd like to do it here.</p>
+    <p class="sig">Allison Felt</p>
+    <p class="contact"><a href="mailto:allisonfelt@gmail.com">allisonfelt@gmail.com</a> &nbsp;·&nbsp; San Francisco, CA</p>
   </section>
 
 </div>
@@ -295,6 +499,8 @@ h2{
 (function () {
   var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
   var rows = Array.prototype.slice.call(document.querySelectorAll('.row'));
+  var mrows = Array.prototype.slice.call(document.querySelectorAll('.mrow'));
+  var matrix = document.getElementById('matrix');
   var status = document.getElementById('status');
   var active = null;
 
@@ -308,12 +514,15 @@ h2{
   function apply() {
     var hits = 0;
     rows.forEach(function (row) {
-      var reqs = (row.dataset.req || '').split(/\s+/);
-      var match = active === null || reqs.indexOf(active) !== -1;
+      var match = active === null ||
+        (row.dataset.req || '').split(/\s+/).indexOf(active) !== -1;
       row.classList.toggle('dim', !match);
-      row.classList.toggle('hit', active !== null && match);
       if (match) hits++;
     });
+    mrows.forEach(function (g) {
+      g.classList.toggle('on', g.dataset.req === active);
+    });
+    matrix.classList.toggle('filtered', active !== null);
     chips.forEach(function (chip) {
       chip.setAttribute('aria-pressed', String(chip.dataset.req === active));
     });
@@ -321,7 +530,7 @@ h2{
       status.textContent = 'Showing the whole letter. Pick a requirement and it will surface the evidence.';
     } else {
       status.innerHTML = '<b>' + hits + (hits === 1 ? ' section' : ' sections') +
-        '</b> answer &ldquo;' + labelFor(active) + '&rdquo;. Click it again to show everything.';
+        '</b> answer &ldquo;' + labelFor(active) + '&rdquo;, and Figure 01 narrows to that row. Click it again to show everything.';
     }
   }
 

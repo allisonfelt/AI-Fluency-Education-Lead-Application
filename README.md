@@ -1,16 +1,52 @@
 # AI Fluency Education Lead — Application
 
-Source for the application site: a cover letter that can be filtered by the
-requirements in the job description, so a reviewer can jump straight to the
-evidence for whatever they care about.
+An application for the [AI Fluency Education Lead](https://job-boards.greenhouse.io/anthropic/jobs/5383242008)
+role at Anthropic, built as a website instead of a cover letter.
 
-- `index.html` — the whole site. No build step, no dependencies.
-- Fonts load from Google Fonts; everything else ships with the page.
+**Live:** https://allisonfelt.github.io/AI-Fluency-Education-Lead-Application/
 
-## Running locally
+## The goal
 
-Open `index.html` in a browser. That's it.
+The job description asks for two things a CV can't demonstrate:
 
-## Deploying
+> A working practice of using Claude and other LLMs as infrastructure in your own production
 
-Served with GitHub Pages from the default branch, root directory.
+> Enough technical comfort to build light tooling and automations yourself
+
+Those are claims you can only make convincingly by doing the thing. So this
+application *is* the evidence — a page I designed, wrote, and built, with the
+commit history left public so the claim is auditable rather than asserted.
+
+## The project
+
+A single page, no build step and no dependencies, that reorganises itself
+around whatever the reader cares about.
+
+- **A filterable letter.** The six requirements from the job description sit at
+  the top as controls. Selecting one dims the letter to just the sections that
+  answer it, and narrows Figure 01 to the matching row.
+- **Figure 01 — a coverage grid.** Six requirements against six pieces of
+  evidence, marked as direct, adjacent, or blank. Two rows are close to empty.
+  That is deliberate: the gaps are stated rather than hidden.
+- **Figure 02 — a timeline.** 2019 to now, with the audience being taught under
+  each role, so the through-line is visible instead of claimed.
+- **Receipts in the margin.** Every number in the letter sits beside the claim
+  it supports, sourced.
+
+## How it's built
+
+| | |
+|---|---|
+| Markup | One hand-written `index.html`. No framework, no build. |
+| Type | Newsreader, IBM Plex Sans, IBM Plex Mono via Google Fonts. |
+| Figures | Hand-authored inline SVG on a shared grid. No charting library. |
+| Interaction | ~40 lines of vanilla JS for the filter state. |
+| Themes | Light and dark, driven by CSS custom properties. |
+| Hosting | GitHub Pages, served from `main`. |
+
+Written with [Claude Code](https://claude.com/claude-code) as the production
+environment, which is the point rather than a disclaimer.
+
+## Running it
+
+Open `index.html` in a browser. That's the whole toolchain.
