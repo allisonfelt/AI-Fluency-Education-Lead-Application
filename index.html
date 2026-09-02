@@ -15,7 +15,7 @@
   --accent:#1B4E3E; --accent-bright:#20705A;
   --accent-wash:rgba(27,78,62,.11); --accent-line:rgba(27,78,62,.34);
   --c-elevate:#B0552A; --c-apple:#1B4E3E; --c-stanford:#2E4C88;
-  --c-google:#783A61; --c-aws:#846516; --c-page:#0F7C67; --c-retail:#8C3F4A;
+  --c-google:#783A61; --c-aws:#846516; --c-page:#0F7C67; --c-retail:#8C3F4A; --c-early:#83887F; --c-reading:#2C6B7A;
   --w-elevate:rgba(176,85,42,.13); --w-apple:rgba(27,78,62,.13); --w-stanford:rgba(46,76,136,.13);
   --w-google:rgba(120,58,97,.13); --w-page:rgba(15,124,103,.13);
   --serif:"Newsreader",Georgia,"Times New Roman",serif;
@@ -29,7 +29,7 @@
     --accent:#86CBAE; --accent-bright:#A6DCC4;
     --accent-wash:rgba(134,203,174,.13); --accent-line:rgba(134,203,174,.36);
     --c-elevate:#E2946A; --c-apple:#86CBAE; --c-stanford:#8FAEE8;
-    --c-google:#D89ABE; --c-aws:#D8BE72; --c-page:#63D3B6; --c-retail:#E39AA4; --c-retail:#E39AA4;
+    --c-google:#D89ABE; --c-aws:#D8BE72; --c-page:#63D3B6; --c-retail:#E39AA4; --c-early:#A6ABA2; --c-reading:#7EC2D3;
     --w-elevate:rgba(226,148,106,.16); --w-apple:rgba(134,203,174,.16); --w-stanford:rgba(143,174,232,.16);
     --w-google:rgba(216,154,190,.16); --w-page:rgba(99,211,182,.16);
   }
@@ -40,7 +40,7 @@
   --accent:#86CBAE; --accent-bright:#A6DCC4;
   --accent-wash:rgba(134,203,174,.13); --accent-line:rgba(134,203,174,.36);
   --c-elevate:#E2946A; --c-apple:#86CBAE; --c-stanford:#8FAEE8;
-  --c-google:#D89ABE; --c-aws:#D8BE72; --c-page:#63D3B6;
+  --c-google:#D89ABE; --c-aws:#D8BE72; --c-page:#63D3B6; --c-retail:#E39AA4; --c-early:#A6ABA2; --c-reading:#7EC2D3;
   --w-elevate:rgba(226,148,106,.16); --w-apple:rgba(134,203,174,.16); --w-stanford:rgba(143,174,232,.16);
   --w-google:rgba(216,154,190,.16); --w-page:rgba(99,211,182,.16);
 }
@@ -187,6 +187,8 @@ figcaption b{color:var(--ink);font-weight:700}
 .fighead{margin:0 0 2rem}
 /* ---------------- work cards ---------------- */
 .work{padding:3.25rem 0;border-bottom:1px solid var(--rule)}
+
+.workNote{font-family:var(--sans);font-size:.88rem;line-height:1.6;color:var(--ink-soft);max-width:38rem;margin:1.25rem 0 0}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
 .card{
   display:flex;flex-direction:column;border:1.5px solid var(--rule);border-radius:20px;
@@ -509,61 +511,76 @@ figcaption b{color:var(--ink);font-weight:700}
       <h2>Same job, different names</h2>
     </div>
     <div class="figscroll">
-    <svg viewBox="0 0 900 400" role="img" aria-label="Timeline from 2019 to now showing five roles: Stanford Graduate School of Business, an Oxford MBA including an AWS summer, Google Chromebooks, a contract producer role at Apple Retail and Packaging, and Apple Education. Beneath the axis each role is listed with the audience taught.">
+    <svg viewBox="0 0 900 470" role="img" aria-label="Timeline from 2014 to now: years living in China, Australia and Taiwan; teaching literacy at Reading Partners in Oakland; Stanford Graduate School of Business; an Oxford MBA including an AWS summer; Google Chromebooks; a contract producer role at Apple Retail and Packaging; and Apple Education. Beneath the axis each period is listed with the audience taught.">
       <defs>
         <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
         </marker>
       </defs>
 
-      <rect x="70" y="60" width="234" height="30" rx="15" style="fill:var(--w-stanford);stroke:var(--c-stanford);stroke-width:1.5"></rect>
-      <text class="lbl-row" x="86" y="80">Stanford GSB</text>
-      <rect x="314" y="60" width="107" height="30" rx="15" style="fill:rgba(132,101,22,.13);stroke:var(--c-aws);stroke-width:1.5"></rect>
-      <text class="lbl-row" x="328" y="80">Oxford</text>
-      <rect x="450" y="60" width="49" height="30" rx="15" style="fill:var(--c-google);stroke:none"></rect>
-      <rect x="503" y="60" width="68" height="30" rx="15" style="fill:var(--c-retail);stroke:none"></rect>
-      <rect x="575" y="60" width="251" height="30" rx="15" style="fill:var(--c-apple);stroke:none"></rect>
-      <text class="lbl-row" x="591" y="80" fill="var(--paper)">Apple Education</text>
-      <circle class="pulse" cx="826" cy="75" r="5" style="fill:var(--c-apple)"></circle>
-      <circle cx="826" cy="75" r="4.5" style="fill:var(--c-apple)"></circle>
-      <text class="lbl-sm" x="838" y="79">now</text>
+      <text class="lbl-sm" x="56" y="42">Whitman BA, 2014</text>
+      <line class="tick" x1="62" y1="50" x2="62" y2="60"></line>
+
+      <rect x="90" y="60" width="176" height="30" rx="15" style="fill:rgba(131,136,127,.16);stroke:var(--c-early);stroke-width:1.5"></rect>
+      <text class="lbl-row" x="104" y="80">China, Australia, Taiwan</text>
+      <rect x="270" y="60" width="96" height="30" rx="15" style="fill:var(--c-reading);stroke:none"></rect>
+      <rect x="372" y="60" width="138" height="30" rx="15" style="fill:var(--w-stanford);stroke:var(--c-stanford);stroke-width:1.5"></rect>
+      <text class="lbl-row" x="386" y="80">Stanford</text>
+      <rect x="516" y="60" width="66" height="30" rx="15" style="fill:rgba(132,101,22,.16);stroke:var(--c-aws);stroke-width:1.5"></rect>
+      <rect x="600" y="60" width="30" height="30" rx="15" style="fill:var(--c-google);stroke:none"></rect>
+      <rect x="634" y="60" width="38" height="30" rx="15" style="fill:var(--c-retail);stroke:none"></rect>
+      <rect x="676" y="60" width="149" height="30" rx="15" style="fill:var(--c-apple);stroke:none"></rect>
+      <text class="lbl-row" x="690" y="80" fill="var(--paper)">Apple Ed.</text>
+      <circle class="pulse" cx="825" cy="75" r="5" style="fill:var(--c-apple)"></circle>
+      <circle cx="825" cy="75" r="4.5" style="fill:var(--c-apple)"></circle>
+      <text class="lbl-sm" x="837" y="79">now</text>
 
       <line class="axis" x1="60" y1="114" x2="846" y2="114" marker-end="url(#arw)"></line>
       <g class="lbl-yr">
-        <line class="tick" x1="70"  y1="114" x2="70"  y2="121"></line><text x="70"  y="136" text-anchor="middle">2019</text>
-        <line class="tick" x1="265" y1="114" x2="265" y2="121"></line><text x="265" y="136" text-anchor="middle">2021</text>
-        <line class="tick" x1="362" y1="114" x2="362" y2="121"></line><text x="362" y="136" text-anchor="middle">2022</text>
-        <line class="tick" x1="460" y1="114" x2="460" y2="121"></line><text x="460" y="136" text-anchor="middle">2023</text>
-        <line class="tick" x1="752" y1="114" x2="752" y2="121"></line><text x="752" y="136" text-anchor="middle">2026</text>
+        <line class="tick" x1="60"  y1="114" x2="60"  y2="121"></line><text x="60"  y="136" text-anchor="middle">2014</text>
+        <line class="tick" x1="180" y1="114" x2="180" y2="121"></line><text x="180" y="136" text-anchor="middle">2016</text>
+        <line class="tick" x1="300" y1="114" x2="300" y2="121"></line><text x="300" y="136" text-anchor="middle">2018</text>
+        <line class="tick" x1="420" y1="114" x2="420" y2="121"></line><text x="420" y="136" text-anchor="middle">2020</text>
+        <line class="tick" x1="540" y1="114" x2="540" y2="121"></line><text x="540" y="136" text-anchor="middle">2022</text>
+        <line class="tick" x1="660" y1="114" x2="660" y2="121"></line><text x="660" y="136" text-anchor="middle">2024</text>
+        <line class="tick" x1="780" y1="114" x2="780" y2="121"></line><text x="780" y="136" text-anchor="middle">2026</text>
       </g>
 
       <text class="lbl-sm" x="60" y="184" style="font-weight:700;letter-spacing:.12em;text-transform:uppercase">Who I was teaching</text>
 
-      <circle cx="66" cy="214" r="5.5" style="fill:var(--c-stanford)"></circle>
-      <text class="lbl-row" x="84" y="218">Stanford GSB</text>
-      <text class="lbl" x="304" y="218">4M readers and viewers &mdash; 15&ndash;20 pieces a month, 5 producers, ~20 freelancers</text>
+      <circle cx="66" cy="214" r="5.5" style="fill:var(--c-early)"></circle>
+      <text class="lbl-row" x="84" y="218">China, Australia, Taiwan</text>
+      <text class="lbl" x="304" y="218">Five years of being illiterate in someone else&rsquo;s language</text>
 
-      <circle cx="66" cy="246" r="5.5" style="fill:var(--c-aws)"></circle>
-      <text class="lbl-row" x="84" y="250">Oxford MBA, AWS</text>
-      <text class="lbl" x="304" y="250">1,000+ startups mapped and ranked across EMEA</text>
+      <circle cx="66" cy="246" r="5.5" style="fill:var(--c-reading)"></circle>
+      <text class="lbl-row" x="84" y="250">Reading Partners, Oakland</text>
+      <text class="lbl" x="304" y="250">Marketing and communications for a literacy nonprofit</text>
 
-      <circle cx="66" cy="278" r="5.5" style="fill:var(--c-google)"></circle>
-      <text class="lbl-row" x="84" y="282">Google</text>
-      <text class="lbl" x="304" y="282">Chromebook app discovery, built for schools</text>
+      <circle cx="66" cy="278" r="5.5" style="fill:var(--c-stanford)"></circle>
+      <text class="lbl-row" x="84" y="282">Stanford GSB</text>
+      <text class="lbl" x="304" y="282">4M readers and viewers &mdash; 15&ndash;20 pieces a month, 5 producers, ~20 freelancers</text>
 
-      <circle cx="66" cy="310" r="5.5" style="fill:var(--c-retail)"></circle>
-      <text class="lbl-row" x="84" y="314">Apple, Retail + Packaging</text>
-      <text class="lbl" x="304" y="314">Global launches; ~$15M saved on AirPods localisation</text>
+      <circle cx="66" cy="310" r="5.5" style="fill:var(--c-aws)"></circle>
+      <text class="lbl-row" x="84" y="314">Oxford MBA, AWS</text>
+      <text class="lbl" x="304" y="314">1,000+ startups mapped and ranked across EMEA</text>
 
-      <circle cx="66" cy="342" r="5.5" style="fill:var(--c-apple)"></circle>
-      <text class="lbl-row" x="84" y="346">Apple Education</text>
-      <text class="lbl" x="304" y="346">3M+ units positioned; Elevate taught to the sales organisation</text>
+      <circle cx="66" cy="342" r="5.5" style="fill:var(--c-google)"></circle>
+      <text class="lbl-row" x="84" y="346">Google</text>
+      <text class="lbl" x="304" y="346">Chromebook app discovery, built for schools</text>
 
-      <text class="lbl-sm" x="60" y="386">Every role: take something complicated, find the version a specific audience can use, ship it at volume.</text>
+      <circle cx="66" cy="374" r="5.5" style="fill:var(--c-retail)"></circle>
+      <text class="lbl-row" x="84" y="378">Apple, Retail + Packaging</text>
+      <text class="lbl" x="304" y="378">Global launches; ~$15M saved on AirPods localisation</text>
+
+      <circle cx="66" cy="406" r="5.5" style="fill:var(--c-apple)"></circle>
+      <text class="lbl-row" x="84" y="410">Apple Education</text>
+      <text class="lbl" x="304" y="410">3M+ units positioned; Elevate taught to the sales organisation</text>
+
+      <text class="lbl-sm" x="60" y="452">Every role: take something complicated, find the version a specific audience can use, ship it at volume.</text>
     </svg>
     </div>
     <p class="swipe">Swipe the figure sideways &rarr;</p>
-    <figcaption><b>None of these were AI jobs.</b> Which is rather the point — the skill you're hiring for is older than the tool, and I've been practising it since 2019 on audiences under no obligation to pay attention.</figcaption>
+    <figcaption><b>None of these were AI jobs.</b> Which is rather the point &mdash; the skill you're hiring for is older than the tool. The first years are on here deliberately: several spent illiterate in someone else's country, and then a literacy nonprofit in Oakland. I have been circling the word &ldquo;fluency&rdquo; for a long time.</figcaption>
   </figure>
 
 
@@ -572,6 +589,7 @@ figcaption b{color:var(--ink);font-weight:700}
     <div class="prose">
       <p class="lede">&ldquo;Simplify&rdquo; usually gets used to mean &ldquo;make it shorter,&rdquo; and that isn&rsquo;t it. Cutting words is easy. Working out what someone actually needs in order to make their own call is a different job, and it&rsquo;s the whole job.</p>
       <p>You mention nurses, teachers, small business owners, policymakers. I&rsquo;ve spent three years on one of those groups &mdash; at Apple I own how we talk about Mac and iPad in education, which mostly means explaining something technical to a district administrator who has forty minutes and no interest in a spec sheet. They don&rsquo;t need to know how the silicon works. They need just enough of a model to tell whether a claim in a vendor deck is plausible.</p>
+      <p>This isn't abstract for me. Before business school I spent a year in China, a year in Australia, and a stretch in Taiwan &mdash; illiterate each time &mdash; and then came home to <a href="https://readingpartners.org/"><strong>Reading Partners</strong></a> in Oakland as their marketing and communications specialist. A literacy nonprofit is a good school for this work: the subject is how people learn to read, the audiences are funders, volunteers, districts, and families, and none of them can be talked to the same way.</p>
       <p>So the test is: can this person decide something without me now? <strong>The smallest true model that lets someone reason on their own</strong> &mdash; and it moves for every audience. Which is why your posting stopped me. You wrote that the point is people making their own judgements with AI rather than copying someone else&rsquo;s.</p>
     </div>
     <aside class="note">
@@ -619,7 +637,7 @@ figcaption b{color:var(--ink);font-weight:700}
     <div class="prose">
       <p>Before Apple I ran creative production at Stanford's business school — YouTube and <a href="https://www.gsb.stanford.edu/magazine"><em>Stanford Business</em> magazine</a>, the two things the team actually bet on. Five producers, twenty freelancers, four million people on the other end.</p>
       <p>The one I'd point you to is <a href="https://www.youtube.com/playlist?list=PLxq_lXOUlvQCrEwiwPaUSJoUzIDTUnq2_"><strong>Class Takeaways</strong></a>: thirty five-minute lessons, one idea each, taken from GSB courses and rebuilt for people who were never going to enrol in them. Humour as serious business. How groups actually work. Roughly 46,000 views and still running. <strong>That is the brief in your posting</strong> — take something taught to a small expert audience and make a version anyone can finish.</p>
-      <p>The rest was throughput: fifteen to twenty finished pieces a month, video output tripled by changing how we found subjects rather than by hiring anyone, and open rates up 80% once I finally sat down and read the audience data. You want the distance from idea to published to keep shrinking. That was already the job.</p>
+      <p>I also owned the magazine's full redesign &mdash; writing and running the RFP, choosing the design agency, and managing them through it. Working with outside partners against a deadline isn't new to me. The rest was throughput: fifteen to twenty finished pieces a month, video output tripled by changing how we found subjects rather than by hiring anyone, and open rates up 80% once I finally sat down and read the audience data. You want the distance from idea to published to keep shrinking. That was already the job.</p>
     </div>
     <aside class="note">
       <dl>
@@ -635,6 +653,7 @@ figcaption b{color:var(--ink);font-weight:700}
   <section class="work">
     <p class="kicker">Selected work</p>
     <h2>Things you can go and look at</h2>
+    <p class="workNote">Almost nothing from Apple is here, and that&rsquo;s deliberate &mdash; most of what I&rsquo;ve made in the last three years is confidential, Elevate included. So this is the work I can actually show you. The Apple numbers elsewhere on this page will have to stand on their own, and I&rsquo;m happy to talk through any of it.</p>
     <div class="cards">
       <a class="card" href="https://www.youtube.com/playlist?list=PLxq_lXOUlvQCrEwiwPaUSJoUzIDTUnq2_">
         <div class="cover cover-yt"><span>Class Takeaways</span></div>
